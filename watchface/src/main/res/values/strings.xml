@@ -1,4 +1,14 @@
 <resources>
     <string name="watch_face_name">watchface_total_view</string>
     <string name="greeting">Hello, world!</string>
+    <string name="Background">Background</string>
+    <string name="ID_Slot_1">Slot 1</string>
+    <string name="ID_Slot_2">Slot 2</string>
+    <string name="ID_Slot_3">Slot 3</string>
+    <string name="ID_Slot_4">Slot 4</string>
+    <string name="ID_Slot_5">Slot 5</string>
+    <string name="ID_Slot_6">Slot 6</string>
+    <string name="ID_Slot_7">Slot 7</string>
+    <string name="color_selector_display_name">Theme Color</string>
+    <string name="ith_option_display_name">%s</string>
 </resources>
