@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <WatchFace width="450" height="450" clipShape="CIRCLE">
-    <Metadata key="CLOCK_TYPE" value="ANALOG"/>
+    <Metadata key="CLOCK_TYPE" value="DIGITAL"/>
     <BitmapFonts>
         <BitmapFont name="Weather Condition Icon">
             <Word name="10" resource="weather_sleety" width="24" height="24"/>
@@ -142,28 +142,28 @@
                 <Configuration id="1e83f486_1d21_4914_9d8a_92b3a8335db7" optionId="0"/>
                 <Configuration id="cef1fbc2_5f62_4b48_af72_3f6fdb6a4c14" optionId="0"/>
                 <Configuration id="65ede76b_bde7_46d2_88db_61c87f39ca65" optionId="0"/>
-                <ComplicationSlot slotId="0">
+                <ComplicationSlot slotId="14">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="1">
+                <ComplicationSlot slotId="13">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="2">
+                <ComplicationSlot slotId="12">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="3">
+                <ComplicationSlot slotId="11">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="4">
+                <ComplicationSlot slotId="10">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="5">
+                <ComplicationSlot slotId="9">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="6">
+                <ComplicationSlot slotId="8">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="7">
+                <ComplicationSlot slotId="15">
                     <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT"/>
                 </ComplicationSlot>
             </Flavor>
@@ -177,28 +177,28 @@
                 <Configuration id="1e83f486_1d21_4914_9d8a_92b3a8335db7" optionId="6"/>
                 <Configuration id="cef1fbc2_5f62_4b48_af72_3f6fdb6a4c14" optionId="4"/>
                 <Configuration id="65ede76b_bde7_46d2_88db_61c87f39ca65" optionId="8"/>
-                <ComplicationSlot slotId="0">
+                <ComplicationSlot slotId="14">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="1">
+                <ComplicationSlot slotId="13">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="2">
+                <ComplicationSlot slotId="12">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="3">
+                <ComplicationSlot slotId="11">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="4">
+                <ComplicationSlot slotId="10">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="5">
+                <ComplicationSlot slotId="9">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="6">
+                <ComplicationSlot slotId="8">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="7">
+                <ComplicationSlot slotId="15">
                     <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT"/>
                 </ComplicationSlot>
             </Flavor>
@@ -2146,20 +2146,14 @@
             <PartText x="0" y="33" width="65" height="33" name="Text_829b" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
                 <Text align="CENTER" ellipsis="FALSE">
                     <Font family="SYNC_TO_DEVICE" size="22" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                        <Template>
-                            %s°
-                            <Parameter expression="[WEATHER.TEMPERATURE]"/>
-                        </Template>
+                        <Template><![CDATA[%s°]]><Parameter expression="[WEATHER.TEMPERATURE]"/></Template>
                     </Font>
                 </Text>
             </PartText>
             <PartText x="18" y="1" width="30" height="30" name="icon_2d18" tintColor="[CONFIGURATION.themeColor.1]" alpha="255">
                 <Text align="CENTER" ellipsis="FALSE">
                     <BitmapFont family="Weather Condition Icon" size="24" color="#ffffffff">
-                        <Template>
-                            %s
-                            <Parameter expression="[WEATHER.CONDITION]"/>
-                        </Template>
+                        <Template><![CDATA[%s]]><Parameter expression="[WEATHER.CONDITION]"/></Template>
                     </BitmapFont>
                 </Text>
             </PartText>
@@ -2170,10 +2164,7 @@
             <PartText x="0" y="33" width="65" height="33" name="Text_a452" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
                 <Text align="CENTER" ellipsis="FALSE">
                     <Font family="SYNC_TO_DEVICE" size="22" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                        <Template>
-                            %s
-                            <Parameter expression="[HEART_RATE]"/>
-                        </Template>
+                        <Template><![CDATA[%d]]><Parameter expression="round([HEART_RATE])"/></Template>
                     </Font>
                 </Text>
             </PartText>
@@ -2187,17 +2178,14 @@
             <ScreenReader stringId=""/>
             <Launch target="health://steps"/>
             <Variant mode="AMBIENT" target="alpha" value="0"/>
-            <PartText pivotX="0.4875" pivotY="1.1316" x="0" y="34" width="65" height="33" name="Text_3ae5" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
+            <PartText x="0" y="34" width="65" height="33" name="Text_3ae5" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
                 <Text align="CENTER" ellipsis="FALSE">
                     <Font family="SYNC_TO_DEVICE" size="22" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                        <Template>
-                            %s
-                            <Parameter expression="[STEP_COUNT]"/>
-                        </Template>
+                        <Template><![CDATA[%s]]><Parameter expression="[STEP_COUNT]"/></Template>
                     </Font>
                 </Text>
             </PartText>
-            <Group pivotX="0.5004" pivotY="0.5417" x="18" y="1" width="30" height="30" name="icon_2644" tintColor="[CONFIGURATION.themeColor.1]" alpha="255">
+            <Group x="18" y="1" width="30" height="30" name="icon_2644" tintColor="[CONFIGURATION.themeColor.1]" alpha="255">
                 <PartImage x="0" y="0" width="30" height="30" name="icon_2644">
                     <Image resource="icon_steps"/>
                 </PartImage>
@@ -2209,10 +2197,7 @@
             <PartText x="0" y="33" width="65" height="33" name="Text_4ff5" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
                 <Text align="CENTER" ellipsis="FALSE">
                     <Font family="SYNC_TO_DEVICE" size="22" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                        <Template>
-                            %s%%
-                            <Parameter expression="[BATTERY_PERCENT]"/>
-                        </Template>
+                        <Template><![CDATA[%s%%]]><Parameter expression="[BATTERY_PERCENT]"/></Template>
                     </Font>
                 </Text>
             </PartText>
@@ -2259,266 +2244,76 @@
                 </Text>
             </PartText>
         </Group>
-        <ComplicationSlot slotId="15" displayName="Today Detail" isCustomizable="FALSE" supportedTypes="LONG_TEXT" x="84" y="310" width="282" height="31" name="TodayDetail_15" alpha="255">
+        <ComplicationSlot slotId="15" displayName="Next Event" isCustomizable="TRUE" supportedTypes="LONG_TEXT SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE EMPTY" x="75" y="285" width="300" height="48" name="TodayDetail_15" alpha="255">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT"/>
-            <BoundingBox x="0" y="0" width="282" height="31"/>
+            <BoundingBox x="0" y="0" width="300" height="48"/>
             <Complication type="LONG_TEXT">
-                <Condition>
-                    <Expressions>
-                        <Expression name="longText"><![CDATA[[COMPLICATION.TITLE] == null && [COMPLICATION.MONOCHROMATIC_IMAGE] == null && [COMPLICATION.SMALL_IMAGE] == null]]></Expression>
-                        <Expression name="longTextImage"><![CDATA[[COMPLICATION.TITLE] == null && [COMPLICATION.MONOCHROMATIC_IMAGE] == null && [COMPLICATION.SMALL_IMAGE] != null]]></Expression>
-                        <Expression name="longTextIcon"><![CDATA[[COMPLICATION.TITLE] == null && [COMPLICATION.MONOCHROMATIC_IMAGE] != null && [COMPLICATION.SMALL_IMAGE] == null]]></Expression>
-                        <Expression name="longTextTitle"><![CDATA[[COMPLICATION.TITLE] != null && [COMPLICATION.MONOCHROMATIC_IMAGE] == null && [COMPLICATION.SMALL_IMAGE] == null]]></Expression>
-                        <Expression name="longTextImageTitle"><![CDATA[[COMPLICATION.TITLE] != null && [COMPLICATION.MONOCHROMATIC_IMAGE] == null && [COMPLICATION.SMALL_IMAGE] != null]]></Expression>
-                        <Expression name="longTextIconTitle"><![CDATA[[COMPLICATION.TITLE] != null && [COMPLICATION.MONOCHROMATIC_IMAGE] != null && [COMPLICATION.SMALL_IMAGE] == null]]></Expression>
-                    </Expressions>
-                    <Compare expression="longText">
-                        <PartText x="0" y="0" width="282" height="31" name="LongText_8bce" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="16" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                    </Compare>
-                    <Compare expression="longTextImage">
-                        <PartImage x="106" y="7" width="69" height="19" name="Image_d96c" alpha="0">
-                            <Variant mode="AMBIENT" target="alpha" value="255"/>
-                            <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
-                        </PartImage>
-                        <PartText x="0" y="0" width="282" height="31" name="LongText_1b7f" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="16" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                    </Compare>
-                    <Compare expression="longTextIcon">
-                        <PartImage x="106" y="7" width="69" height="19" name="Image_d96c" alpha="0">
-                            <Variant mode="AMBIENT" target="alpha" value="255"/>
-                            <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                        </PartImage>
-                        <PartText x="0" y="0" width="282" height="31" name="LongText_1b7f" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="16" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                    </Compare>
-                    <Compare expression="longTextTitle">
-                        <PartText x="7" y="7" width="265" height="9" name="LongTitle_1c7f" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="15" weight="NORMAL" slant="NORMAL" color="#ffadadad">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                        <PartText x="7" y="17" width="265" height="9" name="LongText_af39" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="16" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                    </Compare>
-                    <Compare expression="longTextImageTitle">
-                        <PartImage x="7" y="7" width="69" height="19" name="Image_9bf4" alpha="255">
-                            <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
-                        </PartImage>
-                        <PartText x="82" y="7" width="187" height="9" name="LongTitle_f233" alpha="255">
-                            <Text align="START" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="15" weight="NORMAL" slant="NORMAL" color="#ffadadad">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                        <PartText x="82" y="17" width="187" height="9" name="LongText_7e9a" alpha="255">
-                            <Text align="START" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="16" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                    </Compare>
-                    <Compare expression="longTextIconTitle">
-                        <PartImage x="7" y="7" width="69" height="19" name="Image_9bf4" alpha="255">
-                            <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                        </PartImage>
-                        <PartText x="82" y="7" width="187" height="9" name="LongTitle_f233" alpha="255">
-                            <Text align="START" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="15" weight="NORMAL" slant="NORMAL" color="#ffadadad">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                        <PartText x="82" y="17" width="187" height="9" name="LongText_7e9a" alpha="255">
-                            <Text align="START" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="16" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                    </Compare>
-                    <Default>
-                        <PartImage x="7" y="7" width="69" height="19" name="Image_76c0" alpha="0">
-                            <Variant mode="AMBIENT" target="alpha" value="255"/>
-                            <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
-                        </PartImage>
-                        <PartImage x="82" y="7" width="32" height="9" name="Icon_acce" alpha="0">
-                            <Variant mode="AMBIENT" target="alpha" value="255"/>
-                            <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                        </PartImage>
-                        <PartText x="117" y="7" width="153" height="9" name="LongTitle_e90f" alpha="255">
-                            <Text align="START" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="15" weight="NORMAL" slant="NORMAL" color="#ffadadad">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                        <PartText x="82" y="17" width="187" height="9" name="LongText_354c" alpha="255">
-                            <Text align="START" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="16" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                    </Default>
-                </Condition>
+                <PartText x="0" y="0" width="300" height="18" tintColor="[CONFIGURATION.themeColor.1]">
+                    <Text align="CENTER" ellipsis="TRUE">
+                        <Font family="SYNC_TO_DEVICE" size="14" weight="NORMAL" color="#ffffffff">
+                            <Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template>
+                        </Font>
+                    </Text>
+                </PartText>
+                <PartText x="0" y="18" width="300" height="28" tintColor="[CONFIGURATION.themeColor.2]">
+                    <Text align="CENTER" ellipsis="TRUE">
+                        <Font family="SYNC_TO_DEVICE" size="18" weight="BOLD" color="#ffffffff">
+                            <Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template>
+                        </Font>
+                    </Text>
+                </PartText>
             </Complication>
+            <Complication type="SHORT_TEXT">
+                <PartText x="0" y="0" width="300" height="18" tintColor="[CONFIGURATION.themeColor.1]">
+                    <Text align="CENTER" ellipsis="TRUE">
+                        <Font family="SYNC_TO_DEVICE" size="14" weight="NORMAL" color="#ffffffff">
+                            <Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template>
+                        </Font>
+                    </Text>
+                </PartText>
+                <PartText x="0" y="18" width="300" height="28" tintColor="[CONFIGURATION.themeColor.2]">
+                    <Text align="CENTER" ellipsis="TRUE">
+                        <Font family="SYNC_TO_DEVICE" size="18" weight="BOLD" color="#ffffffff">
+                            <Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template>
+                        </Font>
+                    </Text>
+                </PartText>
+            </Complication>
+            <Complication type="SMALL_IMAGE">
+                <PartImage x="130" y="4" width="40" height="40">
+                    <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
+                </PartImage>
+            </Complication>
+            <Complication type="MONOCHROMATIC_IMAGE">
+                <PartImage x="130" y="4" width="40" height="40" tintColor="[CONFIGURATION.themeColor.2]">
+                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                </PartImage>
+            </Complication>
+            <Complication type="EMPTY"/>
         </ComplicationSlot>
-        <Group x="375" y="175" width="20" height="20" name="Time(SS)_ec2e" alpha="255">
+        <Group x="375" y="172" width="45" height="40" name="Time(SS)_ec2e" alpha="255">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
-            <Group x="0" y="0" width="20" height="20" name="SS_c942" alpha="255">
-                <Variant mode="AMBIENT" target="alpha" value="0"/>
-                <PartText x="10" y="0" width="10" height="20" name="S_dba1" tintColor="[CONFIGURATION.themeColor.1]" alpha="255">
-                    <Localization calendar="GREGORIAN"/>
-                    <Text align="CENTER" ellipsis="FALSE">
-                        <Font family="SYNC_TO_DEVICE" size="16" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                            <Template>
-                                %s
-                                <Parameter expression="[SECOND] % 10"/>
-                            </Template>
-                        </Font>
-                    </Text>
-                </PartText>
-                <PartText x="0" y="0" width="10" height="20" name="S10_d9a9" tintColor="[CONFIGURATION.themeColor.1]" alpha="255">
-                    <Localization calendar="GREGORIAN"/>
-                    <Text align="CENTER" ellipsis="FALSE">
-                        <Font family="SYNC_TO_DEVICE" size="16" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                            <Template>
-                                %s
-                                <Parameter expression="floor([SECOND] / 10)"/>
-                            </Template>
-                        </Font>
-                    </Text>
-                </PartText>
-            </Group>
+            <DigitalClock x="0" y="0" width="45" height="40">
+                <TimeText format="ss" x="0" y="0" width="45" height="40" align="START">
+                    <Font family="SYNC_TO_DEVICE" size="24" weight="BOLD" slant="NORMAL" color="[CONFIGURATION.themeColor.1]"/>
+                </TimeText>
+            </DigitalClock>
         </Group>
-        <Group x="75" y="175" width="300" height="100" name="Time(HH:MM)_c26f" alpha="255">
+        <Group x="45" y="165" width="325" height="115" name="Time(HH:MM)_c26f" alpha="255">
             <Launch target="ALARM"/>
-            <Group x="170" y="0" width="130" height="100" name="MM_fbc7" alpha="255">
-                <PartText x="65" y="0" width="65" height="100" name="M_d170" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
-                    <Localization calendar="GREGORIAN"/>
-                    <Text align="CENTER" ellipsis="FALSE">
-                        <Font family="SYNC_TO_DEVICE" size="115" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                            <Template>
-                                %s
-                                <Parameter expression="[MINUTE] % 10"/>
-                            </Template>
-                        </Font>
-                    </Text>
-                </PartText>
-                <PartText x="0" y="0" width="65" height="100" name="M10_6398" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
-                    <Localization calendar="GREGORIAN"/>
-                    <Text align="CENTER" ellipsis="FALSE">
-                        <Font family="SYNC_TO_DEVICE" size="115" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                            <Template>
-                                %s
-                                <Parameter expression="floor([MINUTE] / 10)"/>
-                            </Template>
-                        </Font>
-                    </Text>
-                </PartText>
-            </Group>
-            <PartText x="131" y="0" width="38" height="100" name="Colon_11ab" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
-                <Variant mode="AMBIENT" target="alpha" value="255"/>
-                <Text align="CENTER" ellipsis="FALSE">
-                    <Font family="SYNC_TO_DEVICE" size="115" weight="NORMAL" slant="NORMAL" color="#ffffffff">:</Font>
-                </Text>
-            </PartText>
-            <Group x="0" y="0" width="130" height="100" name="HH_5e52" alpha="255">
-                <PartText x="65" y="0" width="65" height="100" name="H_f467" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
-                    <Localization calendar="GREGORIAN"/>
-                    <Text align="CENTER" ellipsis="FALSE">
-                        <Font family="SYNC_TO_DEVICE" size="115" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                            <Template>
-                                %s
-                                <Parameter expression="([IS_24_HOUR_MODE]?[HOUR_0_23]:[HOUR_1_12]) % 10"/>
-                            </Template>
-                        </Font>
-                    </Text>
-                </PartText>
-                <PartText x="0" y="0" width="65" height="100" name="H10_1bb3" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
-                    <Localization calendar="GREGORIAN"/>
-                    <Text align="CENTER" ellipsis="FALSE">
-                        <Font family="SYNC_TO_DEVICE" size="115" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                            <Template>
-                                %s
-                                <Parameter expression="floor(([IS_24_HOUR_MODE]?[HOUR_0_23]:[HOUR_1_12])/10)"/>
-                            </Template>
-                        </Font>
-                    </Text>
-                </PartText>
-            </Group>
+            <DigitalClock x="0" y="0" width="325" height="115">
+                <TimeText format="hh:mm" hourFormat="SYNC_TO_DEVICE" x="0" y="0" width="325" height="115" align="CENTER">
+                    <Font family="SYNC_TO_DEVICE" size="115" weight="NORMAL" slant="NORMAL" color="[CONFIGURATION.themeColor.2]"/>
+                </TimeText>
+            </DigitalClock>
         </Group>
-        <PartText pivotY="0.9256" x="96" y="122" width="259" height="39" name="Date_fbfc" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
+        <PartText x="0" y="122" width="450" height="35" name="Date_fbfc" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
             <Launch target="CALENDAR"/>
             <Localization calendar="GREGORIAN"/>
             <Text align="CENTER" ellipsis="FALSE">
-                <Font family="SYNC_TO_DEVICE" size="25" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                    <Template>
-                        %s, %s %s %s
-                        <Parameter expression="[DAY_OF_WEEK_S]"/>
-                        <Parameter expression="[DAY]"/>
-                        <Parameter expression="[MONTH_S]"/>
-                        <Parameter expression="[YEAR]"/>
-                    </Template>
+                <Font family="SYNC_TO_DEVICE" size="24" weight="NORMAL" slant="NORMAL" color="#ffffffff">
+                    <Template><![CDATA[%s, %s %s %s]]><Parameter expression="[DAY_OF_WEEK_S]"/><Parameter expression="[DAY]"/><Parameter expression="[MONTH_S]"/><Parameter expression="[YEAR]"/></Template>
                 </Font>
             </Text>
         </PartText>
