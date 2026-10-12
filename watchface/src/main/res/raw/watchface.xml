@@ -481,7 +481,7 @@
                 </DigitalClock>
             </Group>
         </Group>
-        <Group x="375" y="212" width="45" height="35" name="Time(AMPM)_d41a" alpha="255">
+        <Group x="375" y="238" width="45" height="35" name="Time(AMPM)_d41a" alpha="255">
             <Transform target="alpha" value="[CONFIGURATION.clockFormat] == 1 ? 255 : 0"/>
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <!-- AM ([AMPM_STATE] == 0) -->
