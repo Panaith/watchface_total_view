@@ -60,40 +60,37 @@ watchface_total_view/
 
 Canvas dimensions: **450 x 450** circular display.
 
-### A. Top Row Metrics
-- **Steps Widget (`x=80, y=42`):** Footprint icon + `[STEP_COUNT]` text. Launches Steps tracking on tap.
-- **Battery Widget (`x=193, y=7`):** Circular progress meter + lightning bolt icon + `[BATTERY_PERCENT]%` text. Launches `BATTERY_STATUS` on tap.
-- **Heart Rate Widget (`x=298, y=41`):** Heart icon + `[HEART_RATE]` BPM text. Launches Heart Rate on tap.
+### A. Outer Ring Widgets (Clockwise Dial, `widget 1` to `widget 12`)
+- **`widget 1` (12 o'clock, `x=193, y=7`): Battery Widget.** Circular progress meter + lightning bolt icon + `[BATTERY_PERCENT]%` text. Launches `BATTERY_STATUS` on tap.
+- **`widget 2` (~1 o'clock, `x=298, y=41`): Heart Rate Widget.** Heart icon + `[HEART_RATE]` BPM text. Launches Heart Rate on tap.
+- **`widget 3` (~2 o'clock, `x=381, y=111`): Slot 1 Complication.** Fixed fitness/balance icon (`icon_fitness`) + Slot 1 Complication (`slotId="14"`).
+- **`widget 4` (~3 o'clock, `x=403, y=205`): Slot 3 Complication.** Fixed timer icon (`icon_timer`) + Slot 3 Complication (`slotId="12"`).
+- **`widget 5` (~4 o'clock, `x=378, y=305`): Slot 5 Complication.** Fixed camera icon (`icon_camera`) + Slot 5 Complication (`slotId="10"`).
+- **`widget 6` (~5 o'clock, `x=315, y=374`): Slot 7 Complication.** Fixed microphone icon (`icon_mic`) + Slot 7 Complication (`slotId="8"`). Launches `SETTINGS` on tap.
+- **`widget 7` (6 o'clock, `x=188, y=399`): Logo Branding.** "PanSar" script branding using `corinthia.ttf`. Hidden in Ambient mode.
+- **`widget 8` (~7 o'clock, `x=102, y=375`): Slot 6 Complication.** Fixed home icon (`icon_home`) + Slot 6 Complication (`slotId="9"`).
+- **`widget 9` (~8 o'clock, `x=33, y=305`): Slot 4 Complication.** Fixed nest device icon (`icon_nest`) + Slot 4 Complication (`slotId="11"`).
+- **`widget 10` (~9 o'clock, `x=7, y=205`): Slot 2 Complication.** Fixed clipboard/inventory icon (`icon_inventory`) + Slot 2 Complication (`slotId="13"`).
+- **`widget 11` (~10 o'clock, `x=19, y=111`): Weather Widget.** Weather condition icon + temperature readout (`°`). Launches weather on tap.
+- **`widget 12` (~11 o'clock, `x=80, y=42`): Steps Count Widget.** Footprint/shoe icon (`icon_steps`) + `[STEP_COUNT]` text. Launches Steps tracking on tap.
 
-### B. Mid-Upper Row (Weather, Date & Complication)
-- **Weather Widget (`x=19, y=111`):** Weather condition icon + temperature readout (`°`).
-- **Date (`x=96, y=122`):** Formatted date display (`EEE, d MMM yyyy`). Launches Calendar on tap.
-- **Slot 1 Complication (`x=381, y=111`):** Top-right complication slot.
-
-### C. Main Center (Digital Clock & Seconds)
-- **Hours & Minutes (`x=75, y=175`):** Large, crisp digital time display (`HH:mm`). Launches `ALARM` on tap.
-- **Seconds (`x=375, y=175`):** Superscript seconds counter. Automatically hidden in Ambient mode.
-
-### D. Outer Edge Shortcut Slots (Circular Flank Perimeter)
-- **Slot 2 (`x=7, y=205`):** 9 o'clock flank.
-- **Slot 3 (`x=403, y=205`):** 3 o'clock flank.
-- **Slot 4 (`x=33, y=305`):** 8 o'clock flank.
-- **Slot 5 (`x=378, y=305`):** 4 o'clock flank.
-- **Slot 6 (`x=102, y=375`):** 7 o'clock flank.
-- **Slot 7 (`x=315, y=374`):** 5 o'clock flank.
-
-### E. Lower Center & Branding
-- **Next Event (`TodayDetail`, `x=84, y=310`):** Long text complication for agenda / reminders.
-- **Logo Branding (`x=188, y=399`):** "PanSar" script branding using `corinthia.ttf`. Hidden in Ambient mode.
+### B. Center Rows (Top to Bottom)
+- **Center Row 1 (Date Widget, `x=96, y=122`):** Formatted date display (`EEE, d MMM yyyy`). Launches Calendar on tap.
+- **Center Row 2 (Clock Widget, `x=75, y=175`):** Large digital clock (`HH:mm`) launching `ALARM` on tap, plus superscript seconds (`x=375, y=175`, hidden in Ambient mode).
+- **Center Row 3 ("Next event" Widget, `x=75, y=285`):** `TodayDetail` long text complication (`slotId="15"`) for calendar agenda / reminders.
 
 ---
 
 ## 5. User Customization Schema (`<UserConfigurations>`)
 
-- **Theme Color (`themeColor`):** 11 curated color palettes (White, Cyan, Orange, Green, Purple, Red, and dual-tone variants).
-- **Background Texture (`0cb11f46...`):** 10 selectable background artistic mosaic styles.
-- **Slot 1–7 Icon Selections:** Selectable shortcut icons (Fitness, Timer, Home, Inventory, Camera, Assistant, Mic, etc.).
-- **Flavors:** Pre-configured watch face styling presets.
+- **Step 0: Flavors / Presets:** Pre-configured watch face styling presets (Default & Variant styling).
+- **Step 1: Theme Color (`themeColor`):** 11 curated color palettes (White, Cyan, Orange, Green, Purple, Red, and dual-tone variants).
+- **Step 2: Background Texture (`0cb11f46...`):** 10 selectable background artistic mosaic styles (`background_1` to `background_10`).
+- **Step 3: Clock Format (`clockFormat`):** Selectable between 24-Hour (`opt_24_hour`) and 12-Hour (`opt_12_hour`) display.
+- **Step 4: Clock Font Weight (`clockWeight`):** Selectable between Normal (`opt_normal`), Bold (`opt_bold`), and Light (`opt_light`).
+- **Step 5: Show Seconds (`showSeconds`):** Boolean toggle to show or hide the superscript seconds counter.
+- **Fixed Complication Icons:** `widget 3`, `widget 4`, `widget 5`, `widget 6`, `widget 8`, `widget 9`, `widget 10` use fixed icons tinted by `themeColor`.
+- **Interactive Complications:** Configurable via standard Wear OS Complications screen (`slotId="8"` through `slotId="15"`).
 
 ---
 
