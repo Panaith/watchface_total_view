@@ -1,26 +1,6 @@
 <?xml version="1.0" ?>
 <WatchFace width="450" height="450" clipShape="CIRCLE">
     <Metadata key="CLOCK_TYPE" value="DIGITAL"/>
-    <BitmapFonts>
-        <BitmapFont name="Weather Condition Icon">
-            <Word name="10" resource="weather_sleety" width="24" height="24"/>
-            <Word name="11" resource="weather_snowy_mix" width="24" height="24"/>
-            <Word name="12" resource="weather_rainy_heavy" width="24" height="24"/>
-            <Word name="13" resource="weather_misty" width="24" height="24"/>
-            <Word name="14" resource="weather_partly_cloudy" width="24" height="24"/>
-            <Word name="15" resource="weather_windy" width="24" height="24"/>
-            <Character name="0" resource="weather_unknown" width="24" height="24"/>
-            <Character name="1" resource="weather_clear_day" width="24" height="24"/>
-            <Character name="2" resource="weather_cloudy" width="24" height="24"/>
-            <Character name="3" resource="weather_foggy" width="24" height="24"/>
-            <Character name="4" resource="weather_rainy" width="24" height="24"/>
-            <Character name="5" resource="weather_snowing_heavy" width="24" height="24"/>
-            <Character name="6" resource="weather_rainy_light" width="24" height="24"/>
-            <Character name="7" resource="weather_snowy" width="24" height="24"/>
-            <Character name="8" resource="weather_clear_night" width="24" height="24"/>
-            <Character name="9" resource="weather_thunderstorm" width="24" height="24"/>
-        </BitmapFont>
-    </BitmapFonts>
     <UserConfigurations>
         <ColorConfiguration id="themeColor" defaultValue="0" displayName="config_theme_color" screenReaderText="config_theme_color">
             <ColorOption id="0" colors="#ff000000 #ffffffff #ffffffff" displayName="opt_bg_color_white" screenReaderText="opt_bg_color_white"/>
@@ -35,7 +15,7 @@
             <ColorOption id="9" colors="#ff000000 #ff8a2be2 #ffffffff" displayName="opt_bg_color_blue" screenReaderText="opt_bg_color_blue"/>
             <ColorOption id="10" colors="#ff000000 #ffff2400 #ffffffff" displayName="opt_bg_color_dark_red" screenReaderText="opt_bg_color_dark_red"/>
         </ColorConfiguration>
-        <ListConfiguration id="0cb11f46_acd5_4945_a3ab_4e81b6d212e8" displayName="config_bg_image" screenReaderText="config_bg_image" defaultValue="0">
+        <ListConfiguration id="bgImage" displayName="config_bg_image" screenReaderText="config_bg_image" defaultValue="0">
             <ListOption id="0" displayName="opt_solid_color" screenReaderText="opt_solid_color"/>
             <ListOption id="1" displayName="opt_solid_color" screenReaderText="opt_solid_color"/>
             <ListOption id="2" displayName="opt_solid_color" screenReaderText="opt_solid_color"/>
@@ -57,10 +37,11 @@
             <ListOption id="2" displayName="opt_clock_weight_light" screenReaderText="opt_clock_weight_light"/>
         </ListConfiguration>
         <BooleanConfiguration id="showSeconds" displayName="config_clock_show_seconds" screenReaderText="config_clock_show_seconds" defaultValue="TRUE"/>
+        <BooleanConfiguration id="showBattery" displayName="config_show_battery_bar" screenReaderText="config_show_battery_bar" defaultValue="TRUE"/>
         <Flavors defaultValue="1">
             <Flavor id="1" displayName="ith_option_display_name" screenReaderText="ith_option_display_name">
                 <Configuration id="themeColor" optionId="0"/>
-                <Configuration id="0cb11f46_acd5_4945_a3ab_4e81b6d212e8" optionId="0"/>
+                <Configuration id="bgImage" optionId="0"/>
                 <ComplicationSlot slotId="14">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
@@ -80,7 +61,7 @@
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
                 <ComplicationSlot slotId="8">
-                    <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
+                    <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="SHORT_TEXT"/>
                 </ComplicationSlot>
                 <ComplicationSlot slotId="15">
                     <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT"/>
@@ -88,7 +69,7 @@
             </Flavor>
             <Flavor id="2" displayName="ith_option_display_name" screenReaderText="ith_option_display_name">
                 <Configuration id="themeColor" optionId="7"/>
-                <Configuration id="0cb11f46_acd5_4945_a3ab_4e81b6d212e8" optionId="7"/>
+                <Configuration id="bgImage" optionId="7"/>
                 <ComplicationSlot slotId="14">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
@@ -108,7 +89,7 @@
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
                 <ComplicationSlot slotId="8">
-                    <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
+                    <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="SHORT_TEXT"/>
                 </ComplicationSlot>
                 <ComplicationSlot slotId="15">
                     <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT"/>
@@ -126,7 +107,7 @@
             </PartDraw>
             <Group x="-2" y="0" width="450" height="450" name="BackgroundImage_b45f" alpha="255">
                 <Variant mode="AMBIENT" target="alpha" value="0"/>
-                <ListConfiguration id="0cb11f46_acd5_4945_a3ab_4e81b6d212e8">
+                <ListConfiguration id="bgImage">
                     <ListOption id="1">
                         <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_b45f">
                             <Image resource="background_2"/>
@@ -189,224 +170,6 @@
                 </PartImage>
             </Group>
         </Group>
-        <ComplicationSlot slotId="8" displayName="Slot 7 Complication" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE" alpha="0" x="315" y="374" width="40" height="40" name="Slot7Complication_8">
-            <Variant mode="AMBIENT" target="alpha" value="0"/>
-            <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
-            <BoundingBox x="0" y="0" width="40" height="40"/>
-            <Complication type="SHORT_TEXT">
-                <Condition>
-                    <Expressions>
-                        <Expression name="shortText"><![CDATA[[COMPLICATION.TITLE] == null && [COMPLICATION.MONOCHROMATIC_IMAGE] == null]]></Expression>
-                        <Expression name="shortTextIcon"><![CDATA[[COMPLICATION.TITLE] == null && [COMPLICATION.MONOCHROMATIC_IMAGE] != null]]></Expression>
-                        <Expression name="shortTextTitle"><![CDATA[[COMPLICATION.TITLE] != null && [COMPLICATION.MONOCHROMATIC_IMAGE] == null]]></Expression>
-                    </Expressions>
-                    <Compare expression="shortText">
-                        <PartText x="87" y="65" width="65" height="43" name="Text_0311" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="24" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                    </Compare>
-                    <Compare expression="shortTextIcon">
-                        <PartImage x="14" y="7" width="12" height="12" name="Icon_2122" alpha="255">
-                            <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                        </PartImage>
-                        <PartText x="2" y="20" width="37" height="12" name="Text_b9fc" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="24" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                    </Compare>
-                    <Compare expression="shortTextTitle">
-                        <PartText x="2" y="9" width="37" height="12" name="Text_f11d" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="20" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                        <PartText x="2" y="22" width="37" height="9" name="Title_f2d0" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="15" weight="NORMAL" slant="NORMAL" color="#ffadadad">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                    </Compare>
-                    <Default>
-                        <PartImage x="2" y="8" width="10" height="10" name="Icon_2c2a" alpha="255">
-                            <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                        </PartImage>
-                        <PartText x="2" y="19" width="37" height="12" name="Text_3003" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="20" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                        <PartText x="12" y="8" width="26" height="10" name="Title_84b9" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="15" weight="NORMAL" slant="NORMAL" color="#ffadadad">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                    </Default>
-                </Condition>
-            </Complication>
-            <Complication type="SMALL_IMAGE">
-                <PartImage x="0" y="0" width="40" height="40" name="Image_00ad" alpha="255">
-                    <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
-                </PartImage>
-            </Complication>
-            <Complication type="MONOCHROMATIC_IMAGE">
-                <PartImage x="10" y="10" width="21" height="21" name="Icon_cacb" alpha="255">
-                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                </PartImage>
-            </Complication>
-            <Complication type="RANGED_VALUE">
-                <Condition>
-                    <Expressions>
-                        <Expression name="rangeIconTextTitle"><![CDATA[[COMPLICATION.MONOCHROMATIC_IMAGE] != null && [COMPLICATION.TEXT] != null && [COMPLICATION.TITLE] != null]]></Expression>
-                        <Expression name="rangeIconText"><![CDATA[[COMPLICATION.MONOCHROMATIC_IMAGE] != null && ([COMPLICATION.TEXT] != null || [COMPLICATION.TITLE] != null)]]></Expression>
-                        <Expression name="rangeTextTitle"><![CDATA[[COMPLICATION.TEXT] != null && [COMPLICATION.TITLE] != null]]></Expression>
-                    </Expressions>
-                    <Compare expression="rangeIconTextTitle">
-                        <PartDraw x="3" y="30" width="35" height="3" name="ProgressBar_09a3" alpha="255">
-                            <Line startX="0" endX="35" startY="2" endY="2">
-                                <Stroke color="#1affffff" cap="ROUND" thickness="3"/>
-                            </Line>
-                            <Line startX="0" endX="35" startY="2" endY="2">
-                                <Transform target="endX" value="(((clamp(([COMPLICATION.RANGED_VALUE_VALUE]), ([COMPLICATION.RANGED_VALUE_MIN]), ([COMPLICATION.RANGED_VALUE_MAX])) - ([COMPLICATION.RANGED_VALUE_MIN])) / (([COMPLICATION.RANGED_VALUE_MAX]) - ([COMPLICATION.RANGED_VALUE_MIN]))) * (35))"/>
-                                <Stroke color="#ffffffff" cap="ROUND" thickness="3"/>
-                            </Line>
-                        </PartDraw>
-                        <PartImage x="2" y="6" width="10" height="10" name="Icon_7ccf" alpha="255">
-                            <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                        </PartImage>
-                        <PartText x="2" y="17" width="37" height="12" name="Text_17d3" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="20" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                        <PartText x="12" y="6" width="26" height="10" name="Title_76cc" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="15" weight="NORMAL" slant="NORMAL" color="#ffadadad">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                    </Compare>
-                    <Compare expression="rangeIconText">
-                        <PartDraw x="3" y="31" width="35" height="3" name="ProgressBar_c918" alpha="255">
-                            <Line startX="0" endX="35" startY="2" endY="2">
-                                <Stroke color="#1affffff" cap="ROUND" thickness="3"/>
-                            </Line>
-                            <Line startX="0" endX="35" startY="2" endY="2">
-                                <Transform target="endX" value="(((clamp(([COMPLICATION.RANGED_VALUE_VALUE]), ([COMPLICATION.RANGED_VALUE_MIN]), ([COMPLICATION.RANGED_VALUE_MAX])) - ([COMPLICATION.RANGED_VALUE_MIN])) / (([COMPLICATION.RANGED_VALUE_MAX]) - ([COMPLICATION.RANGED_VALUE_MIN]))) * (35))"/>
-                                <Stroke color="#ffffffff" cap="ROUND" thickness="3"/>
-                            </Line>
-                        </PartDraw>
-                        <PartImage x="14" y="5" width="12" height="12" name="Icon_950a" alpha="255">
-                            <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                        </PartImage>
-                        <PartText x="2" y="18" width="37" height="12" name="Text_a639" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="20" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                    </Compare>
-                    <Compare expression="rangeTextTitle">
-                        <PartDraw x="3" y="30" width="35" height="3" name="ProgressBar_e7d6" alpha="255">
-                            <Line startX="0" endX="35" startY="2" endY="2">
-                                <Stroke color="#1affffff" cap="ROUND" thickness="3"/>
-                            </Line>
-                            <Line startX="0" endX="35" startY="2" endY="2">
-                                <Transform target="endX" value="(((clamp(([COMPLICATION.RANGED_VALUE_VALUE]), ([COMPLICATION.RANGED_VALUE_MIN]), ([COMPLICATION.RANGED_VALUE_MAX])) - ([COMPLICATION.RANGED_VALUE_MIN])) / (([COMPLICATION.RANGED_VALUE_MAX]) - ([COMPLICATION.RANGED_VALUE_MIN]))) * (35))"/>
-                                <Stroke color="#ffffffff" cap="ROUND" thickness="3"/>
-                            </Line>
-                        </PartDraw>
-                        <PartText x="2" y="7" width="37" height="12" name="Text_0c80" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="20" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                        <PartText x="2" y="20" width="37" height="9" name="Title_d0ce" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="15" weight="NORMAL" slant="NORMAL" color="#ffadadad">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                    </Compare>
-                    <Default>
-                        <PartDraw x="3" y="25" width="35" height="3" name="ProgressBar_61f1" alpha="255">
-                            <Line startX="0" endX="35" startY="2" endY="2">
-                                <Stroke color="#1affffff" cap="ROUND" thickness="3"/>
-                            </Line>
-                            <Line startX="0" endX="35" startY="2" endY="2">
-                                <Transform target="endX" value="(((clamp(([COMPLICATION.RANGED_VALUE_VALUE]), ([COMPLICATION.RANGED_VALUE_MIN]), ([COMPLICATION.RANGED_VALUE_MAX])) - ([COMPLICATION.RANGED_VALUE_MIN])) / (([COMPLICATION.RANGED_VALUE_MAX]) - ([COMPLICATION.RANGED_VALUE_MIN]))) * (35))"/>
-                                <Stroke color="#ffffffff" cap="ROUND" thickness="3"/>
-                            </Line>
-                        </PartDraw>
-                        <PartText x="2" y="11" width="37" height="12" name="Text_3c91" alpha="255">
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font family="SYNC_TO_DEVICE" size="20" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                                    <Template>
-                                        %s
-                                        <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                    </Default>
-                </Condition>
-            </Complication>
-            <Complication type="EMPTY"/>
-        </ComplicationSlot>
         <Group x="102" y="375" width="40" height="40" name="Slot6_63b3" alpha="255">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <Group pivotX="0.5417" pivotY="0.5417" x="6" y="5" width="30" height="30" name="icon_300f" tintColor="[CONFIGURATION.themeColor.1]" alpha="255">
@@ -1743,25 +1506,47 @@
             </Complication>
             <Complication type="EMPTY"/>
         </ComplicationSlot>
-        <Group x="19" y="111" width="65" height="65" name="Weather_03cb" alpha="255">
-            <ScreenReader stringId=""/>
-            <Launch target="com.samsung.android.watch.weather"/>
+        <ComplicationSlot slotId="8" displayName="Weather" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE EMPTY" x="19" y="111" width="65" height="65" name="WeatherComplication_8" alpha="255">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
-            <PartText x="0" y="33" width="65" height="33" name="Text_829b" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
-                <Text align="CENTER" ellipsis="FALSE">
-                    <Font family="SYNC_TO_DEVICE" size="22" weight="NORMAL" slant="NORMAL" color="#ffffffff">
-                        <Template><![CDATA[%s°]]><Parameter expression="[WEATHER.TEMPERATURE]"/></Template>
-                    </Font>
-                </Text>
-            </PartText>
-            <PartText x="18" y="1" width="30" height="30" name="icon_2d18" tintColor="[CONFIGURATION.themeColor.1]" alpha="255">
-                <Text align="CENTER" ellipsis="FALSE">
-                    <BitmapFont family="Weather Condition Icon" size="24" color="#ffffffff">
-                        <Template><![CDATA[%s]]><Parameter expression="[WEATHER.CONDITION]"/></Template>
-                    </BitmapFont>
-                </Text>
-            </PartText>
-        </Group>
+            <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="SHORT_TEXT"/>
+            <BoundingBox x="0" y="0" width="65" height="65"/>
+            <Complication type="SHORT_TEXT">
+                <Condition>
+                    <Expressions>
+                        <Expression name="hasIcon"><![CDATA[[COMPLICATION.ICON] != null]]></Expression>
+                        <Expression name="hasMono"><![CDATA[[COMPLICATION.ICON] == null && [COMPLICATION.MONOCHROMATIC_IMAGE] != null]]></Expression>
+                    </Expressions>
+                    <Compare expression="hasIcon">
+                        <PartImage x="18" y="1" width="30" height="30" name="WeatherIcon" alpha="255">
+                            <Image resource="[COMPLICATION.ICON]"/>
+                        </PartImage>
+                    </Compare>
+                    <Compare expression="hasMono">
+                        <PartImage x="18" y="1" width="30" height="30" name="WeatherMonoIcon" tintColor="[CONFIGURATION.themeColor.1]" alpha="255">
+                            <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                        </PartImage>
+                    </Compare>
+                </Condition>
+                <PartText x="0" y="33" width="65" height="33" name="WeatherText" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
+                    <Text align="CENTER" ellipsis="FALSE">
+                        <Font family="SYNC_TO_DEVICE" size="22" weight="NORMAL" slant="NORMAL" color="#ffffffff">
+                            <Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template>
+                        </Font>
+                    </Text>
+                </PartText>
+            </Complication>
+            <Complication type="SMALL_IMAGE">
+                <PartImage x="12" y="12" width="40" height="40" name="WeatherSmallImage" alpha="255">
+                    <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
+                </PartImage>
+            </Complication>
+            <Complication type="MONOCHROMATIC_IMAGE">
+                <PartImage x="12" y="12" width="40" height="40" name="WeatherMonoImage" tintColor="[CONFIGURATION.themeColor.1]" alpha="255">
+                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                </PartImage>
+            </Complication>
+            <Complication type="EMPTY"/>
+        </ComplicationSlot>
         <Group x="298" y="41" width="65" height="65" name="Heart_c169" alpha="255">
             <Launch target="HEALTH_HEART_RATE"/>
             <Variant mode="AMBIENT" target="alpha" value="0"/>
@@ -1805,38 +1590,41 @@
                     </Font>
                 </Text>
             </PartText>
-            <Condition>
-                <Expressions>
-                    <Expression name="conditionalLine_5714"><![CDATA[([BATTERY_PERCENT] >= 0 && [BATTERY_PERCENT] <= 9)]]></Expression>
-                </Expressions>
-                <Compare expression="conditionalLine_5714">
-                    <PartDraw x="15" y="11" width="35" height="10" name="ProgressBarLow_f505" alpha="255">
-                        <Line startX="0" endX="35" startY="5" endY="5">
-                            <Stroke color="#80ff0101" cap="ROUND" thickness="10"/>
-                        </Line>
-                        <Line startX="0" endX="35" startY="5" endY="5">
-                            <Transform target="endX" value="(((clamp((0 + [BATTERY_PERCENT]), 0, 100) - 0) / (100 - 0)) * (35))"/>
-                            <Stroke color="#ffff0101" cap="ROUND" thickness="10"/>
-                        </Line>
-                    </PartDraw>
-                </Compare>
-            </Condition>
-            <Condition>
-                <Expressions>
-                    <Expression name="conditionalLine_48a4"><![CDATA[([BATTERY_PERCENT] >= 10 && [BATTERY_PERCENT] <= 100)]]></Expression>
-                </Expressions>
-                <Compare expression="conditionalLine_48a4">
-                    <PartDraw x="15" y="11" width="35" height="10" name="ProgressBarNormal_9b9e" tintColor="[CONFIGURATION.themeColor.1]" alpha="255">
-                        <Line startX="0" endX="35" startY="5" endY="5">
-                            <Stroke color="#80ffffff" cap="ROUND" thickness="10"/>
-                        </Line>
-                        <Line startX="0" endX="35" startY="5" endY="5">
-                            <Transform target="endX" value="(((clamp((0 + [BATTERY_PERCENT]), 0, 100) - 0) / (100 - 0)) * (35))"/>
-                            <Stroke color="#ffffffff" cap="ROUND" thickness="10"/>
-                        </Line>
-                    </PartDraw>
-                </Compare>
-            </Condition>
+            <Group name="BatteryBar_Container" x="0" y="0" width="65" height="65">
+                <Transform target="alpha" value="[CONFIGURATION.showBattery] ? 255 : 0"/>
+                <Condition>
+                    <Expressions>
+                        <Expression name="conditionalLine_5714"><![CDATA[([BATTERY_PERCENT] >= 0 && [BATTERY_PERCENT] <= 9)]]></Expression>
+                    </Expressions>
+                    <Compare expression="conditionalLine_5714">
+                        <PartDraw x="15" y="11" width="35" height="10" name="ProgressBarLow_f505" alpha="255">
+                            <Line startX="0" endX="35" startY="5" endY="5">
+                                <Stroke color="#80ff0101" cap="ROUND" thickness="10"/>
+                            </Line>
+                            <Line startX="0" endX="35" startY="5" endY="5">
+                                <Transform target="endX" value="(((clamp((0 + [BATTERY_PERCENT]), 0, 100) - 0) / (100 - 0)) * (35))"/>
+                                <Stroke color="#ffff0101" cap="ROUND" thickness="10"/>
+                            </Line>
+                        </PartDraw>
+                    </Compare>
+                </Condition>
+                <Condition>
+                    <Expressions>
+                        <Expression name="conditionalLine_48a4"><![CDATA[([BATTERY_PERCENT] >= 10 && [BATTERY_PERCENT] <= 100)]]></Expression>
+                    </Expressions>
+                    <Compare expression="conditionalLine_48a4">
+                        <PartDraw x="15" y="11" width="35" height="10" name="ProgressBarNormal_9b9e" tintColor="[CONFIGURATION.themeColor.1]" alpha="255">
+                            <Line startX="0" endX="35" startY="5" endY="5">
+                                <Stroke color="#80ffffff" cap="ROUND" thickness="10"/>
+                            </Line>
+                            <Line startX="0" endX="35" startY="5" endY="5">
+                                <Transform target="endX" value="(((clamp((0 + [BATTERY_PERCENT]), 0, 100) - 0) / (100 - 0)) * (35))"/>
+                                <Stroke color="#ffffffff" cap="ROUND" thickness="10"/>
+                            </Line>
+                        </PartDraw>
+                    </Compare>
+                </Condition>
+            </Group>
         </Group>
         <Group x="188" y="399" width="76" height="46" name="Logo-SpinnerandPanSarcopy_0d52" alpha="255">
             <ScreenReader stringId=""/>
@@ -1844,7 +1632,7 @@
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <PartText x="0" y="0" width="75" height="46" name="PanSar_6980" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
                 <Text align="CENTER" ellipsis="FALSE">
-                    <Font family="corinthia_regular" size="32" weight="NORMAL" slant="NORMAL" color="#ffffffff">PanSar</Font>
+                    <Font family="corinthia" size="32" weight="NORMAL" slant="NORMAL" color="#ffffffff">PanSar</Font>
                 </Text>
             </PartText>
         </Group>
@@ -1925,6 +1713,72 @@
                         <Font family="SYNC_TO_DEVICE" size="24" weight="LIGHT" slant="NORMAL" color="[CONFIGURATION.themeColor.1]"/>
                     </TimeText>
                 </DigitalClock>
+            </Group>
+        </Group>
+        <Group x="375" y="212" width="45" height="35" name="Time(AMPM)_d41a" alpha="255">
+            <Transform target="alpha" value="[CONFIGURATION.clockFormat] == 1 ? 255 : 0"/>
+            <Variant mode="AMBIENT" target="alpha" value="0"/>
+            <!-- AM ([AMPM_STATE] == 0) -->
+            <Group name="AM_Group" x="0" y="0" width="45" height="35">
+                <Transform target="alpha" value="[AMPM_STATE] == 0 ? 255 : 0"/>
+                <!-- Normal Weight -->
+                <Group name="AM_Normal" x="0" y="0" width="45" height="35">
+                    <Transform target="alpha" value="[CONFIGURATION.clockWeight] == 0 ? 255 : 0"/>
+                    <PartText x="0" y="0" width="45" height="35" name="Text_AM_Normal">
+                        <Text align="START">
+                            <Font family="SYNC_TO_DEVICE" size="20" weight="NORMAL" slant="NORMAL" color="[CONFIGURATION.themeColor.1]">AM</Font>
+                        </Text>
+                    </PartText>
+                </Group>
+                <!-- Bold Weight -->
+                <Group name="AM_Bold" x="0" y="0" width="45" height="35">
+                    <Transform target="alpha" value="[CONFIGURATION.clockWeight] == 1 ? 255 : 0"/>
+                    <PartText x="0" y="0" width="45" height="35" name="Text_AM_Bold">
+                        <Text align="START">
+                            <Font family="SYNC_TO_DEVICE" size="20" weight="BOLD" slant="NORMAL" color="[CONFIGURATION.themeColor.1]">AM</Font>
+                        </Text>
+                    </PartText>
+                </Group>
+                <!-- Light Weight -->
+                <Group name="AM_Light" x="0" y="0" width="45" height="35">
+                    <Transform target="alpha" value="[CONFIGURATION.clockWeight] == 2 ? 255 : 0"/>
+                    <PartText x="0" y="0" width="45" height="35" name="Text_AM_Light">
+                        <Text align="START">
+                            <Font family="SYNC_TO_DEVICE" size="20" weight="LIGHT" slant="NORMAL" color="[CONFIGURATION.themeColor.1]">AM</Font>
+                        </Text>
+                    </PartText>
+                </Group>
+            </Group>
+            <!-- PM ([AMPM_STATE] == 1) -->
+            <Group name="PM_Group" x="0" y="0" width="45" height="35">
+                <Transform target="alpha" value="[AMPM_STATE] == 1 ? 255 : 0"/>
+                <!-- Normal Weight -->
+                <Group name="PM_Normal" x="0" y="0" width="45" height="35">
+                    <Transform target="alpha" value="[CONFIGURATION.clockWeight] == 0 ? 255 : 0"/>
+                    <PartText x="0" y="0" width="45" height="35" name="Text_PM_Normal">
+                        <Text align="START">
+                            <Font family="SYNC_TO_DEVICE" size="20" weight="NORMAL" slant="NORMAL" color="[CONFIGURATION.themeColor.1]">PM</Font>
+                        </Text>
+                    </PartText>
+                </Group>
+                <!-- Bold Weight -->
+                <Group name="PM_Bold" x="0" y="0" width="45" height="35">
+                    <Transform target="alpha" value="[CONFIGURATION.clockWeight] == 1 ? 255 : 0"/>
+                    <PartText x="0" y="0" width="45" height="35" name="Text_PM_Bold">
+                        <Text align="START">
+                            <Font family="SYNC_TO_DEVICE" size="20" weight="BOLD" slant="NORMAL" color="[CONFIGURATION.themeColor.1]">PM</Font>
+                        </Text>
+                    </PartText>
+                </Group>
+                <!-- Light Weight -->
+                <Group name="PM_Light" x="0" y="0" width="45" height="35">
+                    <Transform target="alpha" value="[CONFIGURATION.clockWeight] == 2 ? 255 : 0"/>
+                    <PartText x="0" y="0" width="45" height="35" name="Text_PM_Light">
+                        <Text align="START">
+                            <Font family="SYNC_TO_DEVICE" size="20" weight="LIGHT" slant="NORMAL" color="[CONFIGURATION.themeColor.1]">PM</Font>
+                        </Text>
+                    </PartText>
+                </Group>
             </Group>
         </Group>
         <Group x="45" y="165" width="325" height="115" name="Time(HH:MM)_c26f" alpha="255">
