@@ -2,35 +2,32 @@
     <string name="watch_face_name">watchface_total_view</string>
 
     <!-- Configurations -->
-    <string name="config_bg_color">Background Color</string>
-    <string name="config_bg_pattern">Background Style</string>
-    <string name="config_bg_image">Background Image</string>
-    <string name="config_show_battery_bar">Show Battery Bar</string>
-    <string name="config_clock_weight">Clock Font Weight</string>
-    <string name="config_clock_format">Clock Format</string>
-    <string name="config_clock_show_seconds">Show Seconds</string>
     <string name="config_theme_color">Theme Color</string>
-    <string name="config_accent_color">Accent Color</string>
+    <string name="config_bg_image">Background Image</string>
+    <string name="config_clock_format">Clock Format</string>
+    <string name="config_clock_weight">Clock Font Weight</string>
+    <string name="config_clock_show_seconds">Show Seconds</string>
+    <string name="config_show_battery_bar">Show Battery Bar</string>
 
-    <!-- Options -->
-    <string name="opt_bg_color_black">Black</string>
-    <string name="opt_bg_color_dark_blue">Dark Blue</string>
-    <string name="opt_bg_color_dark_red">Dark Red</string>
-    <string name="opt_bg_color_dark_green">Dark Green</string>
+    <!-- Flavors / Presets -->
+    <string name="flavor_default">Default</string>
+    <string name="flavor_variant">Variant</string>
+
+    <!-- Theme Color Options -->
     <string name="opt_bg_color_white">White</string>
-    <string name="opt_bg_color_green">Green</string>
-    <string name="opt_bg_color_orange">Orange</string>
-    <string name="opt_bg_color_light_grey">Light Grey</string>
     <string name="opt_bg_color_cyan">Cyan</string>
+    <string name="opt_bg_color_orange">Orange</string>
+    <string name="opt_bg_color_green">Green</string>
     <string name="opt_bg_color_blue">Blue</string>
-    <string name="opt_bg_pattern_vignette">Vignette</string>
-    <string name="opt_bg_pattern_grid">Grid Pattern</string>
-    <string name="opt_bg_pattern_circles">Circles Pattern</string>
-    <string name="opt_bg_pattern_diagonals">Diagonals Pattern</string>
-    <string name="opt_clock_weight_bold">Bold</string>
-    <string name="opt_clock_weight_normal">Normal</string>
-    <string name="opt_clock_weight_light">Light</string>
+    <string name="opt_bg_color_dark_red">Dark Red</string>
+
+    <!-- Background Options -->
+    <string name="opt_solid_color">Solid Color</string>
+
+    <!-- Clock Options -->
     <string name="opt_clock_format_24_hour">24 Hour</string>
     <string name="opt_clock_format_12_hour">12 Hour</string>
-    <string name="opt_solid_color">Solid Color</string>
+    <string name="opt_clock_weight_normal">Normal</string>
+    <string name="opt_clock_weight_bold">Bold</string>
+    <string name="opt_clock_weight_light">Light</string>
 </resources>

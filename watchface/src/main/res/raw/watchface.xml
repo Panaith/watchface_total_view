@@ -39,7 +39,7 @@
         <BooleanConfiguration id="showSeconds" displayName="config_clock_show_seconds" screenReaderText="config_clock_show_seconds" defaultValue="TRUE"/>
         <BooleanConfiguration id="showBattery" displayName="config_show_battery_bar" screenReaderText="config_show_battery_bar" defaultValue="TRUE"/>
         <Flavors defaultValue="1">
-            <Flavor id="1" displayName="ith_option_display_name" screenReaderText="ith_option_display_name">
+            <Flavor id="1" displayName="flavor_default" screenReaderText="flavor_default">
                 <Configuration id="themeColor" optionId="0"/>
                 <Configuration id="bgImage" optionId="0"/>
                 <ComplicationSlot slotId="14">
@@ -67,7 +67,7 @@
                     <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT"/>
                 </ComplicationSlot>
             </Flavor>
-            <Flavor id="2" displayName="ith_option_display_name" screenReaderText="ith_option_display_name">
+            <Flavor id="2" displayName="flavor_variant" screenReaderText="flavor_variant">
                 <Configuration id="themeColor" optionId="7"/>
                 <Configuration id="bgImage" optionId="7"/>
                 <ComplicationSlot slotId="14">
