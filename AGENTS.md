@@ -66,12 +66,12 @@ Canvas dimensions: **450 x 450** circular display.
 - **`widget 3` (~2 o'clock, `x=381, y=111`): Slot 1 Complication.** Fixed fitness/balance icon (`icon_fitness`) + Slot 1 Complication (`slotId="14"`).
 - **`widget 4` (~3 o'clock, `x=403, y=205`): Slot 3 Complication.** Fixed timer icon (`icon_timer`) + Slot 3 Complication (`slotId="12"`).
 - **`widget 5` (~4 o'clock, `x=378, y=305`): Slot 5 Complication.** Fixed camera icon (`icon_camera`) + Slot 5 Complication (`slotId="10"`).
-- **`widget 6` (~5 o'clock, `x=315, y=374`): Slot 7 Complication.** Fixed microphone icon (`icon_mic`) + Slot 7 Complication (`slotId="8"`). Launches `SETTINGS` on tap.
+- **`widget 6` (~5 o'clock, `x=315, y=374`): Settings Launcher Widget.** Fixed microphone icon (`icon_mic`). Dedicated app launcher that launches `SETTINGS` on tap.
 - **`widget 7` (6 o'clock, `x=188, y=399`): Logo Branding.** "PanSar" script branding using `corinthia.ttf`. Hidden in Ambient mode.
 - **`widget 8` (~7 o'clock, `x=102, y=375`): Slot 6 Complication.** Fixed home icon (`icon_home`) + Slot 6 Complication (`slotId="9"`).
 - **`widget 9` (~8 o'clock, `x=33, y=305`): Slot 4 Complication.** Fixed nest device icon (`icon_nest`) + Slot 4 Complication (`slotId="11"`).
 - **`widget 10` (~9 o'clock, `x=7, y=205`): Slot 2 Complication.** Fixed clipboard/inventory icon (`icon_inventory`) + Slot 2 Complication (`slotId="13"`).
-- **`widget 11` (~10 o'clock, `x=19, y=111`): Weather Widget.** Weather condition icon + temperature readout (`°`). Launches weather on tap.
+- **`widget 11` (~10 o'clock, `x=19, y=111`): Weather Complication.** Weather Complication (`slotId="8"`, Short Text / Small Image / Monochromatic Image).
 - **`widget 12` (~11 o'clock, `x=80, y=42`): Steps Count Widget.** Footprint/shoe icon (`icon_steps`) + `[STEP_COUNT]` text. Launches Steps tracking on tap.
 
 ### B. Center Rows (Top to Bottom)
