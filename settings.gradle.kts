@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Watchface total view"
+rootProject.name = "watchface_total_view"
 include(":watchface")
