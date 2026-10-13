@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
 <WatchFace width="450" height="450" clipShape="CIRCLE">
     <Metadata key="CLOCK_TYPE" value="DIGITAL"/>
+
     <UserConfigurations>
         <ColorConfiguration id="themeColor" defaultValue="0" displayName="config_theme_color" screenReaderText="config_theme_color">
             <ColorOption id="0" colors="#ff000000 #ffffffff #ffffffff" displayName="opt_bg_color_white" screenReaderText="opt_bg_color_white"/>
