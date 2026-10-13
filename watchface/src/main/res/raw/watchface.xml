@@ -395,7 +395,7 @@
                 </Text>
             </PartText>
         </Group>
-        <ComplicationSlot slotId="3" displayName="Next Event" isCustomizable="TRUE" supportedTypes="LONG_TEXT SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE EMPTY" x="75" y="285" width="300" height="48" name="TodayDetail_3" alpha="255">
+        <ComplicationSlot slotId="3" displayName="Next Event" isCustomizable="FALSE" supportedTypes="LONG_TEXT SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE EMPTY" x="75" y="285" width="300" height="48" name="TodayDetail_3" alpha="255">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT"/>
             <BoundingBox x="0" y="0" width="300" height="48"/>
@@ -441,7 +441,13 @@
                     <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
             </Complication>
-            <Complication type="EMPTY"/>
+            <Complication type="EMPTY">
+                <PartText x="0" y="10" width="300" height="28" name="TodayDetail_Empty" tintColor="[CONFIGURATION.themeColor.2]">
+                    <Text align="CENTER" ellipsis="TRUE">
+                        <Font family="SYNC_TO_DEVICE" size="18" weight="BOLD" color="#ffffffff">Next event</Font>
+                    </Text>
+                </PartText>
+            </Complication>
         </ComplicationSlot>
         <Group x="375" y="172" width="45" height="40" name="Time(SS)_ec2e" alpha="255">
             <Transform target="alpha" value="[CONFIGURATION.showSeconds] ? 255 : 0"/>

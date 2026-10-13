@@ -124,7 +124,7 @@ All ring widgets are hidden in ambient mode.
 - **Row 2 – Clock (`x=45, y=165, w=325, h=115`):** size 115, `themeColor.2`.
   - **Seconds (`x=375, y=172`):** size 24, `themeColor.1`.
   - **AM/PM (`x=375, y=238`):** size 20, `themeColor.1`, at the bottom of the seconds column.
-- **Row 3 – Next Event (`x=75, y=285, w=300, h=48`, `slotId="3"`):** default `NEXT_EVENT` (`LONG_TEXT`). Supported: `LONG_TEXT`, `SHORT_TEXT`, `SMALL_IMAGE`, `MONOCHROMATIC_IMAGE`, `EMPTY`.
+- **Row 3 – Next Event (`x=75, y=285, w=300, h=48`, `slotId="3"`):** non-customizable (`isCustomizable="FALSE"`), default `NEXT_EVENT` (`LONG_TEXT`), fallback text "Next event" when empty. Supported: `LONG_TEXT`, `SHORT_TEXT`, `SMALL_IMAGE`, `MONOCHROMATIC_IMAGE`, `EMPTY`.
 
 ### C. Complication Slot IDs
 | Slot ID | Purpose |
