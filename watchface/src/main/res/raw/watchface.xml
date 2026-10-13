@@ -157,7 +157,6 @@
             </Group>
         </Group>
         <Group x="315" y="374" width="40" height="40" name="Slot7_bbf1" alpha="255">
-            <Launch target="SETTINGS"/>
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <Group pivotX="0.5417" pivotY="0.5417" x="6" y="5" width="30" height="30" name="icon_4962" tintColor="[CONFIGURATION.themeColor.1]" alpha="255">
                 <PartImage x="0" y="0" width="30" height="30" name="icon_4962">
@@ -165,6 +164,15 @@
                 </PartImage>
             </Group>
         </Group>
+        <ComplicationSlot slotId="6" displayName="Slot 3 Complication" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE" alpha="0" x="315" y="374" width="40" height="40" name="Slot3_Mic_6">
+            <Variant mode="AMBIENT" target="alpha" value="0"/>
+            <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
+            <BoundingBox x="0" y="0" width="40" height="40"/>
+            <Complication type="SMALL_IMAGE"/>
+            <Complication type="MONOCHROMATIC_IMAGE"/>
+            <Complication type="SHORT_TEXT"/>
+            <Complication type="EMPTY"/>
+        </ComplicationSlot>
         <Group x="102" y="375" width="40" height="40" name="Slot6_63b3" alpha="255">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <Group pivotX="0.5417" pivotY="0.5417" x="6" y="5" width="30" height="30" name="icon_300f" tintColor="[CONFIGURATION.themeColor.1]" alpha="255">
@@ -183,6 +191,7 @@
             <Complication type="EMPTY"/>
         </ComplicationSlot>
         <Group x="378" y="305" width="40" height="40" name="Slot5_219e" alpha="255">
+            <Launch target="com.google.android.GoogleCamera"/>
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <Group pivotX="0.5417" pivotY="0.5833" x="5" y="4" width="30" height="30" name="icon_c3b8" tintColor="[CONFIGURATION.themeColor.1]" alpha="255">
                 <PartImage x="0" y="0" width="30" height="30" name="icon_c3b8">
@@ -190,15 +199,6 @@
                 </PartImage>
             </Group>
         </Group>
-        <ComplicationSlot slotId="6" displayName="Slot 3 Complication" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE" alpha="0" x="378" y="305" width="40" height="40" name="Slot3_Camera_6">
-            <Variant mode="AMBIENT" target="alpha" value="0"/>
-            <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
-            <BoundingBox x="0" y="0" width="40" height="40"/>
-            <Complication type="SMALL_IMAGE"/>
-            <Complication type="MONOCHROMATIC_IMAGE"/>
-            <Complication type="SHORT_TEXT"/>
-            <Complication type="EMPTY"/>
-        </ComplicationSlot>
         <Group x="33" y="305" width="40" height="40" name="Slot4_00fa" alpha="255">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <Group pivotX="0.5417" pivotY="0.4583" x="5" y="4" width="30" height="30" name="icon_d7a1" tintColor="[CONFIGURATION.themeColor.1]" alpha="255">

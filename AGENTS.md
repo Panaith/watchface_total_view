@@ -106,8 +106,8 @@ All ring widgets are hidden in ambient mode.
 | `widget 2` (~1 o'clock) | `x=298, y=41` (65x65) | `icon_heart` + `round([HEART_RATE])` | `HEALTH_HEART_RATE` |
 | `widget 3` (~2 o'clock) | `x=381, y=111` (40x40) | `icon_fitness` + Slot 1 (`slotId="4"`) | Complication |
 | `widget 4` (~3 o'clock) | `x=403, y=205` (40x40) | `icon_timer` + Slot 2 (`slotId="5"`) | Complication |
-| `widget 5` (~4 o'clock) | `x=378, y=305` (40x40) | `icon_camera` + Slot 3 (`slotId="6"`) | Complication |
-| `widget 6` (~5 o'clock) | `x=315, y=374` (40x40) | `icon_mic` (fixed launcher) | `SETTINGS` |
+| `widget 5` (~4 o'clock) | `x=378, y=305` (40x40) | `icon_camera` (fixed launcher) | Camera (`com.google.android.GoogleCamera`) |
+| `widget 6` (~5 o'clock) | `x=315, y=374` (40x40) | `icon_mic` + Slot 3 (`slotId="6"`) | Complication |
 | `widget 7` (6 o'clock) | `x=188, y=399` (76x46) | "PanSar" logo, `corinthia` size 32 | Contacts |
 | `widget 8` (~7 o'clock) | `x=102, y=375` (40x40) | `icon_home` + Slot 4 (`slotId="7"`) | Complication |
 | `widget 9` (~8 o'clock) | `x=33, y=305` (40x40) | `icon_nest` + Slot 5 (`slotId="8"`) | Complication |
