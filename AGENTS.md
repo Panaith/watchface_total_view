@@ -67,7 +67,7 @@ Canvas: **450 x 450** circular display (`clipShape="CIRCLE"`, `CLOCK_TYPE=DIGITA
 | Configuration ID | Type | Options / Values | Default | Description |
 |---|---|---|---|---|
 | `themeColor` | Color | 11 options (`0`–`10`), see below | `0` (White) | Three-color theme palette |
-| `bgImage` | List | `0`–`9` → `background_1` … `background_10` | `0` | Background texture image |
+| `bgImage` | List | `0`–`8` → `background_1` … `background_9` | `0` | Background texture image |
 | `clockFormat` | List | `0` (24 Hour), `1` (12 Hour) | `0` | Time format |
 | `clockWeight` | List | `0` (Normal), `1` (Bold), `2` (Light) | `0` | Font weight for clock, seconds, AM/PM |
 | `showSeconds` | Boolean | `TRUE` / `FALSE` | `TRUE` | Toggle seconds display |
@@ -104,19 +104,19 @@ All ring widgets are hidden in ambient mode.
 |---|---|---|---|
 | `widget 1` (12 o'clock) | `x=193, y=7` (65x65) | Battery: `35 x 10` bar (toggled by `showBattery`) + `[BATTERY_PERCENT]%` | `BATTERY_STATUS` |
 | `widget 2` (~1 o'clock) | `x=298, y=41` (65x65) | `icon_heart` + `round([HEART_RATE])` | `HEALTH_HEART_RATE` |
-| `widget 3` (~2 o'clock) | `x=381, y=111` (40x40) | `icon_fitness` + Slot 1 (`slotId="14"`) | Complication |
-| `widget 4` (~3 o'clock) | `x=403, y=205` (40x40) | `icon_timer` + Slot 3 (`slotId="12"`) | Complication |
-| `widget 5` (~4 o'clock) | `x=378, y=305` (40x40) | `icon_camera` + Slot 5 (`slotId="10"`) | Complication |
+| `widget 3` (~2 o'clock) | `x=381, y=111` (40x40) | `icon_fitness` + Slot 1 (`slotId="4"`) | Complication |
+| `widget 4` (~3 o'clock) | `x=403, y=205` (40x40) | `icon_timer` + Slot 2 (`slotId="5"`) | Complication |
+| `widget 5` (~4 o'clock) | `x=378, y=305` (40x40) | `icon_camera` + Slot 3 (`slotId="6"`) | Complication |
 | `widget 6` (~5 o'clock) | `x=315, y=374` (40x40) | `icon_mic` (fixed launcher) | `SETTINGS` |
 | `widget 7` (6 o'clock) | `x=188, y=399` (76x46) | "PanSar" logo, `corinthia` size 32 | Contacts |
-| `widget 8` (~7 o'clock) | `x=102, y=375` (40x40) | `icon_home` + Slot 6 (`slotId="9"`) | Complication |
-| `widget 9` (~8 o'clock) | `x=33, y=305` (40x40) | `icon_nest` + Slot 4 (`slotId="11"`) | Complication |
-| `widget 10` (~9 o'clock) | `x=7, y=205` (40x40) | `icon_inventory` + Slot 2 (`slotId="13"`) | Complication |
-| `widget 11` (~10 o'clock) | `x=19, y=111` (65x65) | Weather complication (`slotId="8"`) | Complication |
+| `widget 8` (~7 o'clock) | `x=102, y=375` (40x40) | `icon_home` + Slot 4 (`slotId="7"`) | Complication |
+| `widget 9` (~8 o'clock) | `x=33, y=305` (40x40) | `icon_nest` + Slot 5 (`slotId="8"`) | Complication |
+| `widget 10` (~9 o'clock) | `x=7, y=205` (40x40) | `icon_inventory` + Slot 6 (`slotId="9"`) | Complication |
+| `widget 11` (~10 o'clock) | `x=19, y=111` (65x65) | Weather complication (`slotId="2"`) | Complication |
 | `widget 12` (~11 o'clock) | `x=80, y=42` (65x66) | `icon_steps` + `[STEP_COUNT]` | `health://steps` |
 
-- **Shortcut slots (`slotId` 9–14):** invisible (`alpha="0"`) 40x40 tap targets placed over fixed icons tinted with `themeColor.1`. Default provider `APP_SHORTCUT` (`SMALL_IMAGE`). Supported: `SHORT_TEXT`, `SMALL_IMAGE`, `MONOCHROMATIC_IMAGE`, `RANGED_VALUE`.
-- **Weather slot (`slotId` 8):** Supported: `SHORT_TEXT`, `SMALL_IMAGE`, `MONOCHROMATIC_IMAGE`, `EMPTY`.
+- **Shortcut slots (`slotId` 4–9):** invisible (`alpha="0"`) 40x40 tap targets placed over fixed icons tinted with `themeColor.1`. Default provider `APP_SHORTCUT` (`SMALL_IMAGE`). Supported: `SHORT_TEXT`, `SMALL_IMAGE`, `MONOCHROMATIC_IMAGE`, `RANGED_VALUE`.
+- **Weather slot (`slotId` 2):** Supported: `SHORT_TEXT`, `SMALL_IMAGE`, `MONOCHROMATIC_IMAGE`, `EMPTY`.
 - Widget value text: size 22, `NORMAL`, `themeColor.2`.
 
 ### B. Center Rows (top to bottom)
@@ -124,14 +124,14 @@ All ring widgets are hidden in ambient mode.
 - **Row 2 – Clock (`x=45, y=165, w=325, h=115`):** size 115, `themeColor.2`.
   - **Seconds (`x=375, y=172`):** size 24, `themeColor.1`.
   - **AM/PM (`x=375, y=238`):** size 20, `themeColor.1`, at the bottom of the seconds column.
-- **Row 3 – Next Event (`x=75, y=285, w=300, h=48`, `slotId="15"`):** default `NEXT_EVENT` (`LONG_TEXT`). Supported: `LONG_TEXT`, `SHORT_TEXT`, `SMALL_IMAGE`, `MONOCHROMATIC_IMAGE`, `EMPTY`.
+- **Row 3 – Next Event (`x=75, y=285, w=300, h=48`, `slotId="3"`):** default `NEXT_EVENT` (`LONG_TEXT`). Supported: `LONG_TEXT`, `SHORT_TEXT`, `SMALL_IMAGE`, `MONOCHROMATIC_IMAGE`, `EMPTY`.
 
 ### C. Complication Slot IDs
 | Slot ID | Purpose |
 |---|---|
-| `8` | Weather |
-| `9`–`14` | Ring shortcuts (Slot 6 … Slot 1) |
-| `15` | Next Event |
+| `2` | Weather |
+| `3` | Next Event |
+| `4`–`9` | Ring shortcuts (Slot 1 … Slot 6) |
 
 ---
 

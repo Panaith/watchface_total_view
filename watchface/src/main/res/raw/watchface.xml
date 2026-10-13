@@ -25,7 +25,6 @@
             <ListOption id="6" displayName="opt_solid_color" screenReaderText="opt_solid_color"/>
             <ListOption id="7" displayName="opt_solid_color" screenReaderText="opt_solid_color"/>
             <ListOption id="8" displayName="opt_solid_color" screenReaderText="opt_solid_color"/>
-            <ListOption id="9" displayName="opt_solid_color" screenReaderText="opt_solid_color"/>
         </ListConfiguration>
         <ListConfiguration id="clockFormat" displayName="config_clock_format" screenReaderText="config_clock_format" defaultValue="0">
             <ListOption id="0" displayName="opt_clock_format_24_hour" screenReaderText="opt_clock_format_24_hour"/>
@@ -42,57 +41,57 @@
             <Flavor id="1" displayName="flavor_default" screenReaderText="flavor_default">
                 <Configuration id="themeColor" optionId="0"/>
                 <Configuration id="bgImage" optionId="0"/>
-                <ComplicationSlot slotId="14">
+                <ComplicationSlot slotId="2">
+                    <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="SHORT_TEXT"/>
+                </ComplicationSlot>
+                <ComplicationSlot slotId="3">
+                    <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT"/>
+                </ComplicationSlot>
+                <ComplicationSlot slotId="4">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="13">
+                <ComplicationSlot slotId="5">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="12">
+                <ComplicationSlot slotId="6">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="11">
+                <ComplicationSlot slotId="7">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="10">
+                <ComplicationSlot slotId="8">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
                 <ComplicationSlot slotId="9">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
-                </ComplicationSlot>
-                <ComplicationSlot slotId="8">
-                    <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="SHORT_TEXT"/>
-                </ComplicationSlot>
-                <ComplicationSlot slotId="15">
-                    <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT"/>
                 </ComplicationSlot>
             </Flavor>
             <Flavor id="2" displayName="flavor_variant" screenReaderText="flavor_variant">
                 <Configuration id="themeColor" optionId="7"/>
                 <Configuration id="bgImage" optionId="7"/>
-                <ComplicationSlot slotId="14">
+                <ComplicationSlot slotId="2">
+                    <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="SHORT_TEXT"/>
+                </ComplicationSlot>
+                <ComplicationSlot slotId="3">
+                    <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT"/>
+                </ComplicationSlot>
+                <ComplicationSlot slotId="4">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="13">
+                <ComplicationSlot slotId="5">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="12">
+                <ComplicationSlot slotId="6">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="11">
+                <ComplicationSlot slotId="7">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
-                <ComplicationSlot slotId="10">
+                <ComplicationSlot slotId="8">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
                 </ComplicationSlot>
                 <ComplicationSlot slotId="9">
                     <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
-                </ComplicationSlot>
-                <ComplicationSlot slotId="8">
-                    <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="SHORT_TEXT"/>
-                </ComplicationSlot>
-                <ComplicationSlot slotId="15">
-                    <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT"/>
                 </ComplicationSlot>
             </Flavor>
         </Flavors>
@@ -105,57 +104,52 @@
                     <Fill color="#ff888888"/>
                 </Rectangle>
             </PartDraw>
-            <Group x="-2" y="0" width="450" height="450" name="BackgroundImage_b45f" alpha="255">
+            <Group x="0" y="0" width="450" height="450" name="BackgroundImage_Group" alpha="255">
                 <Variant mode="AMBIENT" target="alpha" value="0"/>
                 <ListConfiguration id="bgImage">
-                    <ListOption id="1">
-                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_b45f">
-                            <Image resource="background_2"/>
-                        </PartImage>
-                    </ListOption>
                     <ListOption id="0">
-                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_b45f">
+                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_0">
                             <Image resource="background_1"/>
                         </PartImage>
                     </ListOption>
-                    <ListOption id="7">
-                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_b45f">
-                            <Image resource="background_8"/>
+                    <ListOption id="1">
+                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_1">
+                            <Image resource="background_2"/>
+                        </PartImage>
+                    </ListOption>
+                    <ListOption id="2">
+                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_2">
+                            <Image resource="background_3"/>
                         </PartImage>
                     </ListOption>
                     <ListOption id="3">
-                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_b45f">
+                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_3">
                             <Image resource="background_4"/>
                         </PartImage>
                     </ListOption>
                     <ListOption id="4">
-                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_b45f">
+                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_4">
                             <Image resource="background_5"/>
                         </PartImage>
                     </ListOption>
-                    <ListOption id="6">
-                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_b45f">
-                            <Image resource="background_4"/>
-                        </PartImage>
-                    </ListOption>
                     <ListOption id="5">
-                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_b45f">
+                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_5">
                             <Image resource="background_6"/>
                         </PartImage>
                     </ListOption>
-                    <ListOption id="9">
-                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_b45f">
-                            <Image resource="background_10"/>
+                    <ListOption id="6">
+                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_6">
+                            <Image resource="background_7"/>
+                        </PartImage>
+                    </ListOption>
+                    <ListOption id="7">
+                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_7">
+                            <Image resource="background_8"/>
                         </PartImage>
                     </ListOption>
                     <ListOption id="8">
-                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_b45f">
+                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_8">
                             <Image resource="background_9"/>
-                        </PartImage>
-                    </ListOption>
-                    <ListOption id="2">
-                        <PartImage x="0" y="0" width="450" height="450" name="BackgroundImage_b45f">
-                            <Image resource="background_3"/>
                         </PartImage>
                     </ListOption>
                 </ListConfiguration>
@@ -178,7 +172,7 @@
                 </PartImage>
             </Group>
         </Group>
-        <ComplicationSlot slotId="9" displayName="Slot 6 Complication" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE" alpha="0" x="102" y="375" width="40" height="40" name="Slot6Complication_9">
+        <ComplicationSlot slotId="7" displayName="Slot 4 Complication" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE" alpha="0" x="102" y="375" width="40" height="40" name="Slot4_Home_7">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
             <BoundingBox x="0" y="0" width="40" height="40"/>
@@ -195,7 +189,7 @@
                 </PartImage>
             </Group>
         </Group>
-        <ComplicationSlot slotId="10" displayName="Slot 5 Complication" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE" alpha="0" x="378" y="305" width="40" height="40" name="Slot5Complication_10">
+        <ComplicationSlot slotId="6" displayName="Slot 3 Complication" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE" alpha="0" x="378" y="305" width="40" height="40" name="Slot3_Camera_6">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
             <BoundingBox x="0" y="0" width="40" height="40"/>
@@ -212,7 +206,7 @@
                 </PartImage>
             </Group>
         </Group>
-        <ComplicationSlot slotId="11" displayName="Slot 4 Complication" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE" alpha="0" x="33" y="305" width="40" height="40" name="Slot4Complication_11">
+        <ComplicationSlot slotId="8" displayName="Slot 5 Complication" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE" alpha="0" x="33" y="305" width="40" height="40" name="Slot5_Nest_8">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
             <BoundingBox x="0" y="0" width="40" height="40"/>
@@ -229,7 +223,7 @@
                 </PartImage>
             </Group>
         </Group>
-        <ComplicationSlot slotId="12" displayName="Slot 3 Complication" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE" alpha="0" x="403" y="205" width="40" height="40" name="Slot3Complication_12">
+        <ComplicationSlot slotId="5" displayName="Slot 2 Complication" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE" alpha="0" x="403" y="205" width="40" height="40" name="Slot2_Timer_5">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
             <BoundingBox x="0" y="0" width="40" height="40"/>
@@ -246,7 +240,7 @@
                 </PartImage>
             </Group>
         </Group>
-        <ComplicationSlot slotId="13" displayName="Slot 2 Complication" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE" alpha="0" x="7" y="205" width="40" height="40" name="Slot2Complication_13">
+        <ComplicationSlot slotId="9" displayName="Slot 6 Complication" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE" alpha="0" x="7" y="205" width="40" height="40" name="Slot6_Inventory_9">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
             <BoundingBox x="0" y="0" width="40" height="40"/>
@@ -263,7 +257,7 @@
                 </PartImage>
             </Group>
         </Group>
-        <ComplicationSlot slotId="14" displayName="Slot 1 Complication" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE" alpha="0" x="381" y="111" width="40" height="40" name="Slot1Compilation_14">
+        <ComplicationSlot slotId="4" displayName="Slot 1 Complication" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE RANGED_VALUE" alpha="0" x="381" y="111" width="40" height="40" name="Slot1_Fitness_4">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <DefaultProviderPolicy defaultSystemProvider="APP_SHORTCUT" defaultSystemProviderType="SMALL_IMAGE"/>
             <BoundingBox x="0" y="0" width="40" height="40"/>
@@ -272,7 +266,7 @@
             <Complication type="SHORT_TEXT"/>
             <Complication type="EMPTY"/>
         </ComplicationSlot>
-        <ComplicationSlot slotId="8" displayName="Weather" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE EMPTY" x="19" y="111" width="65" height="65" name="WeatherComplication_8" alpha="255">
+        <ComplicationSlot slotId="2" displayName="Weather" isCustomizable="TRUE" supportedTypes="SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE EMPTY" x="19" y="111" width="65" height="65" name="WeatherComplication_2" alpha="255">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="SHORT_TEXT"/>
             <BoundingBox x="0" y="0" width="65" height="65"/>
@@ -330,7 +324,6 @@
             </Group>
         </Group>
         <Group x="80" y="42" width="65" height="66" name="Steps_8e61" alpha="255">
-            <ScreenReader stringId=""/>
             <Launch target="health://steps"/>
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <PartText x="0" y="34" width="65" height="33" name="Text_3ae5" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
@@ -368,7 +361,7 @@
                                 <Stroke color="#80ff0101" cap="ROUND" thickness="10"/>
                             </Line>
                             <Line startX="0" endX="35" startY="5" endY="5">
-                                <Transform target="endX" value="(((clamp((0 + [BATTERY_PERCENT]), 0, 100) - 0) / (100 - 0)) * (35))"/>
+                                <Transform target="endX" value="(((clamp([BATTERY_PERCENT], 0, 100)) / 100) * 35)"/>
                                 <Stroke color="#ffff0101" cap="ROUND" thickness="10"/>
                             </Line>
                         </PartDraw>
@@ -384,7 +377,7 @@
                                 <Stroke color="#80ffffff" cap="ROUND" thickness="10"/>
                             </Line>
                             <Line startX="0" endX="35" startY="5" endY="5">
-                                <Transform target="endX" value="(((clamp((0 + [BATTERY_PERCENT]), 0, 100) - 0) / (100 - 0)) * (35))"/>
+                                <Transform target="endX" value="(((clamp([BATTERY_PERCENT], 0, 100)) / 100) * 35)"/>
                                 <Stroke color="#ffffffff" cap="ROUND" thickness="10"/>
                             </Line>
                         </PartDraw>
@@ -393,7 +386,6 @@
             </Group>
         </Group>
         <Group x="188" y="399" width="76" height="46" name="Logo-SpinnerandPanSarcopy_0d52" alpha="255">
-            <ScreenReader stringId=""/>
             <Launch target="com.google.android.contacts"/>
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <PartText x="0" y="0" width="75" height="46" name="PanSar_6980" tintColor="[CONFIGURATION.themeColor.2]" alpha="255">
@@ -402,7 +394,7 @@
                 </Text>
             </PartText>
         </Group>
-        <ComplicationSlot slotId="15" displayName="Next Event" isCustomizable="TRUE" supportedTypes="LONG_TEXT SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE EMPTY" x="75" y="285" width="300" height="48" name="TodayDetail_15" alpha="255">
+        <ComplicationSlot slotId="3" displayName="Next Event" isCustomizable="TRUE" supportedTypes="LONG_TEXT SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE EMPTY" x="75" y="285" width="300" height="48" name="TodayDetail_3" alpha="255">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT"/>
             <BoundingBox x="0" y="0" width="300" height="48"/>
@@ -444,7 +436,7 @@
                 </PartImage>
             </Complication>
             <Complication type="MONOCHROMATIC_IMAGE">
-                <PartImage x="130" y="4" width="40" height="40" tintColor="[CONFIGURATION.themeColor.2]">
+                <PartImage x="130" y="4" width="40" height="40" tintColor="[CONFIGURATION.themeColor.1]">
                     <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
             </Complication>
