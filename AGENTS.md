@@ -208,6 +208,20 @@ java -jar "tools\wff-validator.jar" 2 "watchface/src/main/res/raw/watchface.xml"
    ```
 4. Select the watch face on the watch picker or in the companion app (Galaxy Wearable / Pixel Watch app).
 
+### E. Launching Local Wear OS Emulators (Windows / Antigravity)
+When launching a local emulator, always follow this exact workflow:
+1. **Find and list all available local emulators first:**
+   ```powershell
+   & "$env:LOCALAPPDATA\Android\Sdk\emulator\emulator.exe" -list-avds
+   ```
+2. **Ask the user to select an emulator:** Present the discovered AVDs to the user (using the `ask_question` tool or a direct prompt) and wait for their selection before launching.
+3. **Launch the selected emulator via WMI (`Win32_Process`):**
+   - **Important:** Do **not** launch `emulator.exe` with `Start-Process` or a standard foreground command in `run_command`, because Windows terminates child processes attached to the temporary PowerShell job object when the command exits.
+   - Always spawn `emulator.exe` via WMI (`Win32_Process`) so it runs as an independent desktop process:
+     ```powershell
+     Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments @{ CommandLine = "$env:LOCALAPPDATA\Android\Sdk\emulator\emulator.exe -avd <SELECTED_AVD_NAME>" }
+     ```
+
 ---
 
 ## 8. Git & Contribution Guidelines
