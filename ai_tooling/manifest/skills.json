@@ -1,0 +1,89 @@
+{
+  "$schema": "./skills.schema.json",
+  "$comment": [
+    "Every skill in ai_tooling/skills/ and the group it belongs to. setup.ps1 publishes from",
+    "this file, verify-agent-setup.ps1 checks it against the folders, and the skill",
+    "inventory in ai_tooling/documentation/overview.md is generated from it",
+    "(scripts/update-generated-docs.ps1).",
+    "",
+    "A skill lives in ai_tooling/skills/{group}/{name}/SKILL.md. Its owner, source, apps and",
+    "default come from its group; a skill entry may override apps and default, and",
+    "carries its own status. A deprecated skill names its replacement (replacedBy) and",
+    "is removed after one release.",
+    "",
+    "Groups: upstream/{stack} for skills an update-{stack}-skills.ps1 installer brings in,",
+    "custom for project skills every app can use, custom-{app} for one app's.",
+    "",
+    "Profiles choose what one developer publishes: setup.ps1 -Profile core.",
+    "Two are built in: 'default' (every skill with default true) and 'all'."
+  ],
+  "groups": {
+    "upstream/mattpocock": {
+      "description": "Planning, grilling and engineering practice (Matt Pocock), configured through docs/agents/",
+      "$comment": "mattpocock/skills, MIT (LICENSE in every skill folder). Stack-agnostic, so the blueprint ships it installed; remove the group and its skills when the project does not want it.",
+      "owner": "Panagiotis Sarridis",
+      "source": { "repo": "https://github.com/mattpocock/skills", "ref": "v1.3.1", "commit": "24fe0ef7737efae15c87225755e9f6f5965e4888", "hash": "f45511a51c9e302bdac180062169584f8482c8a59e07ab1a75f83c0374d30ef3", "installer": "ai_tooling/update-mattpocock-skills.ps1" },
+      "apps": [],
+      "default": true
+    },
+    "custom": {
+      "description": "Watch Face Total View project skills for every app: work items, PR reviews, docs, pipelines, decisions, agent tooling",
+      "owner": "Panagiotis Sarridis",
+      "source": "project",
+      "apps": [],
+      "default": true
+    },
+    "custom-watchface": {
+      "description": "Watch Face Total View skills of the watchface app: editing the Watch Face Format XML, running the face on a watch or emulator",
+      "owner": "Panagiotis Sarridis",
+      "source": "project",
+      "apps": ["watchface"],
+      "default": true
+    }
+  },
+  "profiles": {
+    "core": {
+      "description": "Project workflow and engineering practice only",
+      "groups": ["custom", "upstream/mattpocock"]
+    },
+    "watchface": {
+      "description": "Work on the watchface app: project workflow, engineering practice and the watchface skills",
+      "groups": ["custom", "upstream/mattpocock", "custom-watchface"]
+    }
+  },
+  "skills": {
+    "ask-matt": { "group": "upstream/mattpocock" },
+    "codebase-design": { "group": "upstream/mattpocock" },
+    "code-review": { "group": "upstream/mattpocock" },
+    "diagnosing-bugs": { "group": "upstream/mattpocock" },
+    "domain-modeling": { "group": "upstream/mattpocock" },
+    "grilling": { "group": "upstream/mattpocock" },
+    "grill-me": { "group": "upstream/mattpocock" },
+    "grill-with-docs": { "group": "upstream/mattpocock" },
+    "handoff": { "group": "upstream/mattpocock" },
+    "implement": { "group": "upstream/mattpocock" },
+    "improve-codebase-architecture": { "group": "upstream/mattpocock" },
+    "prototype": { "group": "upstream/mattpocock" },
+    "research": { "group": "upstream/mattpocock" },
+    "retro": { "group": "upstream/mattpocock" },
+    "tdd": { "group": "upstream/mattpocock" },
+    "teach": { "group": "upstream/mattpocock" },
+    "to-questionnaire": { "group": "upstream/mattpocock" },
+    "to-spec": { "group": "upstream/mattpocock" },
+    "to-tickets": { "group": "upstream/mattpocock" },
+    "triage": { "group": "upstream/mattpocock" },
+    "wait-what": { "group": "upstream/mattpocock" },
+    "wayfinder": { "group": "upstream/mattpocock" },
+    "wizard": { "group": "upstream/mattpocock" },
+    "writing-for-agents": { "group": "upstream/mattpocock" },
+    "custom-aitooling-maintain": { "group": "custom" },
+    "custom-decision-council": { "group": "custom" },
+    "custom-docs-update": { "group": "custom" },
+    "custom-pipeline-edit": { "group": "custom" },
+    "custom-pr-respond": { "group": "custom" },
+    "custom-pr-review": { "group": "custom" },
+    "custom-workitem-develop": { "group": "custom" },
+    "custom-watchface-device-deploy": { "group": "custom-watchface" },
+    "custom-watchface-wff-edit": { "group": "custom-watchface" }
+  }
+}

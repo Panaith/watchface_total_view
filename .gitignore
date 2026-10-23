@@ -1,4 +1,27 @@
 *.iml
 .idea/
 .DS_Store
+
+# AI agent tooling
+#
+# The shared source of truth is the app ai_tooling/ (skills, instructions,
+# mcp-servers.json, scripts) and it IS committed. Everything below is GENERATED
+# per developer by ai_tooling/setup.ps1, for whichever agent they use - see
+# ai_tooling/documentation/overview.md. CLAUDE.md and GEMINI.md match the stubs
+# at the root and in every app folder, the tooling app's included.
+CLAUDE.md
 GEMINI.md
+.claude/
+.agents/
+.cursor/
+.github/skills/
+.github/instructions/
+.github/copilot-instructions.md
+.vscode/mcp.json
+.mcp.json
+docs/agents/
+ai_tooling/mcp-packages/
+ai_tooling/localversion
+ai_tooling/localprofile
+ai_tooling/localsources.json
+ai_tooling/tests/modules/

@@ -1,0 +1,139 @@
+{
+  "$schema": "./agents.schema.json",
+  "$comment": [
+    "Every agent ai_tooling/setup.ps1 sets up, and where each one wants things. setup.ps1,",
+    "verify-agent-setup.ps1 and the delivery table in ai_tooling/documentation/overview.md all read this",
+    "file; none of them holds an agent's paths of its own. Adding an agent means adding",
+    "an entry here (and a writer in ai_tooling/lib/AgentSetup.psm1 if it needs a new rule format).",
+    "",
+    "The order of the entries is the order of the interactive prompt and of -Agent all.",
+    "Paths are relative to the repository root, or to the home folder where mcp.root",
+    "(for mcp.legacyFiles: mcp.legacyRoot) is 'home', with forward slashes.",
+    "",
+    "What setup publishes follows from three facts per agent (documentation/agent-setup.md):",
+    "  skillLinks           'junction' or 'copy': how each published skill gets into",
+    "                       its skills folder. Copies for agents that do not follow",
+    "                       a junction inside that folder.",
+    "  resolvesImports      follows '@file' lines in its instruction files. If not,",
+    "                       PERMISSIONS.md and ai_tooling/instructions/ are copied into its",
+    "                       rules folder.",
+    "  readsNestedAgentsMd  reads an app folder's AGENTS.md by itself. If not, and no",
+    "                       importing stub in the app folder brings it in, each app's",
+    "                       AGENTS.md is copied as a rule scoped to that app."
+  ],
+  "agents": {
+    "claude": {
+      "name": "Claude Code",
+      "detect": {
+        "vscodeExtensions": ["anthropic.claude-code*"],
+        "homeFolders": [".claude"],
+        "commands": ["claude"],
+        "$why": "The JetBrains plugin ships no CLI of its own and refuses to start unless 'claude' is on PATH."
+      },
+      "skills": ".claude/skills",
+      "skillLinks": "junction",
+      "$skillLinks": "Tested 2026-10-06: a junction per skill in .claude/skills is listed at session start. Skills in a group folder below it are not; .claude/skills in an app folder only once a file in that app is read.",
+      "$disableModelInvocation": "Command-only skills (disable-model-invocation: true) are kept out of the agent's skill list, as documented (https://code.claude.com/docs/en/skills). Seen 2026-10-15 in a Claude Code session of the desktop app (2.1.295 installed): a command-only project skill, grill-me, grill-with-docs, ask-matt, handoff, retro and teach were missing from the session's skill list, grilling was there. Typing /name was not tried in that check.",
+      "subagents": ".claude/agents",
+      "$subagents": "The definitions in ai_tooling/agents/. Only Claude Code reads subagent definitions; for the other agents the rule that dispatches a subagent says what to do instead.",
+      "stub": { "file": "CLAUDE.md", "inApps": true },
+      "$stub": "The app stub brings the app's AGENTS.md in once a file in that app is read: tested 2026-10-21 with the desktop app 3.1623.0 and the extension 2.1.306 in Antigravity IDE 2.5.5 (documentation/agent-setup.md, 'When app rules load').",
+      "resolvesImports": true,
+      "$resolvesImports": "Tested 2026-10-05: plain '@file' lines, '[@file](file)', nested imports, and '@../' from an app AGENTS.md once a file in that app is read.",
+      "readsNestedAgentsMd": false,
+      "mcp": { "root": "repo", "file": ".mcp.json", "key": "mcpServers", "httpUrlField": "url", "httpType": true },
+      "$personal": "Checked 2026-10-12 against https://code.claude.com/docs/en/skills and https://code.claude.com/docs/en/mcp. A personal skill beats a project skill of the same name (\"personal over project\"). An MCP server of the local scope, stored in ~/.claude.json under projects.{project path}.mcpServers, beats the project's .mcp.json; the user scope (top-level mcpServers there) loses to it and is not read.",
+      "personal": {
+        "skills": [{ "folder": ".claude/skills", "hides": true }],
+        "mcp": [{ "root": "home", "file": ".claude.json", "key": "mcpServers", "perProject": "projects", "hides": true }]
+      }
+    },
+    "gemini": {
+      "name": "Gemini / Antigravity",
+      "detect": {
+        "homeFolders": [".gemini/antigravity-ide"],
+        "$why": "Checked 2026-10-19 on a machine with Antigravity 2.1.4 and Antigravity IDE 2.5.5: their install of 2026-06-22 created .gemini/antigravity-ide and, 41 s later, .gemini/config (with a .migrated marker); Gemini CLI, used on the same machine, wrote neither. Not .gemini/config: setup creates that folder itself when it writes the MCP config there (mcp.keepValid), so it would detect its own output. A fresh install on a clean machine was not tried."
+      },
+      "skills": ".agents/skills",
+      "skillLinks": "copy",
+      "$skillLinks": "Tested 2026-10-06 with Antigravity: a junction per skill in .agents/skills is not listed, while a junction that is the whole folder is. So each skill is copied. Skills in an app folder are not listed.",
+      "$disableModelInvocation": "Not tested (2026-10-15): no chat was run. Antigravity's skills docs (https://antigravity.google/docs/skills) name only name and description. The language servers of Antigravity IDE 2.5.5 and Antigravity 2.1.4 contain a 'disable-model-invocation' YAML field, so they read it; whether they then keep the skill out of the agent's list is unknown. Gemini CLI's skill loader reads only name and description (google-gemini/gemini-cli, packages/core/src/skills/skillLoader.ts on main), so Gemini CLI does not honour it. Probe: documentation/agent-setup.md, 'Command-only skills'.",
+      "stub": { "file": "GEMINI.md", "inApps": true },
+      "$stub": "The app stubs do nothing for Antigravity (tested); kept for Gemini CLI, which reads nested GEMINI.md files.",
+      "resolvesImports": false,
+      "$resolvesImports": "Tested 2026-10-05 with Antigravity 2.5.5: it saw the text of the root AGENTS.md, but none of the files it imports, in any form.",
+      "readsNestedAgentsMd": false,
+      "$readsNestedAgentsMd": "Tested the same day: an app folder's AGENTS.md did not load, not even after reading a file in that folder.",
+      "rules": { "folder": ".agents/rules", "format": "antigravity" },
+      "$rules": "The app rules, and an instruction file whose own frontmatter says trigger: glob or has no trigger, are written as trigger: model_decision, the globs named in the description; an instruction file with another trigger goes as it is. Tested 2026-10-21 with Antigravity 2.24.0 and Antigravity IDE 2.5.5: a rule without trigger was not listed under Customizations and never loaded, at the start, on a read, an edit or a question matching its description. Tested 2026-10-21 with Antigravity 2.24.0 and Antigravity IDE 2.5.5: a trigger: glob rule never loaded, on a read, an edit or with the file open in the editor; a model_decision rule was read by the model before an edit in its folder, also without being told to follow project rules (documentation/agent-setup.md, 'When app rules load').",
+      "mcp": {
+        "root": "repo",
+        "file": ".agents/mcp_config.json",
+        "key": "mcpServers",
+        "httpUrlField": "serverUrl",
+        "$httpUrlField": "Tested 2026-10-13 with Antigravity IDE 2.5.5: a server with httpUrl failed to load ('no connector can handle spec'); the IDE's bundled mcp_config.schema.json knows only serverUrl for a remote server.",
+        "httpType": false,
+        "$why": "The workspace file, one per clone (https://antigravity.google/docs/mcp: 'Configured in your active project under .agents/mcp_config.json'; the docs bundled with Antigravity IDE 2.5.5 name only the global ~/.gemini/config/mcp_config.json and plugin configs). Tested 2026-10-20 with Antigravity 2.24.0 and Antigravity IDE 2.5.5, both opened on the repository root: a probe server only in .agents/mcp_config.json was listed and started (the IDE started it after the global ones), one only in the global file too, and a server of the same name in both ran the global one. So the global file wins on a name clash: setup never writes the project's servers there, and verify-agent-setup.ps1 warns about a server in it named like a project one.",
+        "legacyRoot": "home",
+        "$legacyRoot": "The root of keepValid (and of legacyFiles, files an earlier setup version wrote and later runs take the project's servers out of; none in this project yet).",
+        "keepValid": [".gemini/config/mcp_config.json"],
+        "$keepValid": "Tested 2026-10-20 with Antigravity 2.24.0: after setup deleted the global file, Antigravity recreated it empty (0 bytes) and then loaded no MCP server at all, not even the workspace file's; with { \"mcpServers\": {} } in it, Antigravity 2.24.0 and Antigravity IDE 2.5.5 loaded the workspace file's servers. A fresh install may create the file empty too. So setup writes an empty server list into a missing or empty one and never deletes it. A bare {} works too: tested 2026-10-20 with Antigravity 2.24.0 and Antigravity IDE 2.5.5, the four workspace servers loaded."
+      },
+      "$personal": "Checked 2026-10-12 against https://antigravity.google/docs/skills. Personal skills: ~/.gemini/config/skills, the legacy ~/.gemini/antigravity/skills, and ~/.gemini/antigravity-cli/skills for Antigravity CLI. Which one wins for the same name is not documented. Personal MCP servers: the global ~/.gemini/config/mcp_config.json, which wins over the workspace file on a name clash (mcp.$why above).",
+      "personal": {
+        "skills": [{ "folder": ".gemini/config/skills", "hides": false }, { "folder": ".gemini/antigravity/skills", "hides": false }, { "folder": ".gemini/antigravity-cli/skills", "hides": false }],
+        "mcp": [{ "root": "home", "file": ".gemini/config/mcp_config.json", "key": "mcpServers", "hides": true }]
+      }
+    },
+    "copilot": {
+      "name": "GitHub Copilot",
+      "detect": {
+        "vscodeExtensions": ["github.copilot*"]
+      },
+      "skills": ".github/skills",
+      "skillLinks": "junction",
+      "$skillLinks": "Tested 2026-10-06: a junction per skill is listed. Copilot also reads .claude/skills and .agents/skills; a name found in several of them is listed once, and the copy in .agents/skills wins. Skills in an app folder are not listed.",
+      "$disableModelInvocation": "Honours it, going by the installed code, not a chat run (2026-10-15, VS Code 1.140.0 with its built-in Copilot Chat 0.68.0): both places that build the skill list for the system prompt, in VS Code and in the extension, leave out a skill with disable-model-invocation: true, and user-invocable defaults to true, so it stays a / command. Documented since VS Code 1.109 (https://code.visualstudio.com/docs/copilot/customization/agent-skills).",
+      "resolvesImports": false,
+      "$resolvesImports": "Not tested: Copilot's documentation describes no import syntax, so '@file' is plain text.",
+      "readsNestedAgentsMd": false,
+      "$readsNestedAgentsMd": "Nested AGENTS.md files are off by default (chat.useNestedAgentsMdFiles).",
+      "rules": {
+        "folder": ".github/instructions",
+        "format": "copilot"
+      },
+      "$rules": "An applyTo rule does not load when the agent reads a matching file. Tested 2026-10-21 with VS Code 1.142.0 and @github/copilot 1.0.95: before editing a matching file, the model read the applyTo file and the folder's AGENTS.md itself, from the instruction list Copilot puts into its prompt (documentation/agent-setup.md, 'When app rules load').",
+      "pointerFile": ".github/copilot-instructions.md",
+      "$pointerFile": "Copilot reads AGENTS.md by itself, but not when chat.useAgentsMdFile is off; this file points it there either way.",
+      "mcp": { "root": "repo", "file": ".vscode/mcp.json", "key": "servers", "httpUrlField": "url", "httpType": true },
+      "$personal": "Checked 2026-10-12 against https://code.visualstudio.com/docs/copilot/customization/agent-skills and https://code.visualstudio.com/docs/copilot/customization/mcp-servers. Which one wins for the same name, a personal skill or server against the project's, is not documented.",
+      "personal": {
+        "skills": [{ "folder": ".copilot/skills", "hides": false }, { "folder": ".claude/skills", "hides": false }, { "folder": ".agents/skills", "hides": false }],
+        "mcp": [{ "root": "appdata", "file": "Code/User/mcp.json", "key": "servers", "hides": false, "$why": "The docs name the user mcp.json (command 'MCP: Open User Configuration') but give no Windows path; Code/User/mcp.json under %APPDATA% is the usual place for VS Code's user profile and is not confirmed." }]
+      }
+    },
+    "cursor": {
+      "name": "Cursor",
+      "detect": {
+        "homeFolders": [".cursor"]
+      },
+      "skills": ".cursor/skills",
+      "skillLinks": "copy",
+      "$skillLinks": "Not tested (Cursor is not installed on the test machine). Copied, because Cursor's forum reports skills behind links not being found after a restart. Pending probe: Cursor's docs list .agents/skills as a folder it reads; if confirmed, this copy can go (documentation/agent-setup.md, 'How skills are found').",
+      "$disableModelInvocation": "Not tested (Cursor is not installed on the test machine). Documented as honoured (https://cursor.com/docs/context/skills: such a skill 'is only included when explicitly invoked via /skill-name'). A forum report (Cursor 3.12.17, opened 2026-07-28; https://forum.cursor.com/t/disable-model-invocation-true-ignored-in-agents-skills/166846) said it is ignored for a skill in .agents/skills but honoured in .cursor/skills; on 2026-08-03 the reporter could not reproduce it in an empty repository, and the thread has no answer from Cursor. Cursor also reads .claude/skills, so with the Claude Code or Antigravity layout present it finds a project skill more than once.",
+      "resolvesImports": false,
+      "$resolvesImports": "Not tested (Cursor is not installed on the test machine): Cursor's documentation describes AGENTS.md as plain Markdown without imports.",
+      "readsNestedAgentsMd": true,
+      "rules": {
+        "folder": ".cursor/rules",
+        "format": "cursor"
+      },
+      "mcp": { "root": "repo", "file": ".cursor/mcp.json", "key": "mcpServers", "httpUrlField": "url", "httpType": true },
+      "$personal": "Checked 2026-10-12 against https://cursor.com/docs/context/skills and https://cursor.com/docs/context/mcp. Besides its own folders, Cursor reads ~/.claude/skills and ~/.codex/skills for compatibility. Which one wins for the same name, a personal skill or server against the project's, is not documented.",
+      "personal": {
+        "skills": [{ "folder": ".cursor/skills", "hides": false }, { "folder": ".agents/skills", "hides": false }, { "folder": ".claude/skills", "hides": false }, { "folder": ".codex/skills", "hides": false }],
+        "mcp": [{ "root": "home", "file": ".cursor/mcp.json", "key": "mcpServers", "hides": false }]
+      }
+    }
+  }
+}

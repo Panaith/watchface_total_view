@@ -41,24 +41,8 @@ Here are some screenshots of the watch face demonstrating different states and c
 
 ## Getting Started
 
-To edit or build this watch face, follow these steps:
-
-1. **Install Watch Face Studio:** Download and install [Watch Face Studio](https://developer.samsung.com/watch-face-studio/download.html) from the Samsung Developer website.
-2. **Clone the Repository:** Clone this repository to your local machine.
-3. **Open Project:**
-   - Launch Watch Face Studio.
-   - Click on **Open Project**.
-   - Navigate to the `src` directory of this repository.
-   - Select one of the `.wfs` files (e.g., `src/Watchface Total View 5.wfs` for the latest version).
-4. **Run on Device:** Connect your Wear OS watch or emulator and click the **Run on Device** button to deploy and test.
-
-## Project Structure
-
-- `src/`: Contains the Watch Face Studio project files (`.wfs`).
-- `assets/`: Screenshots and preview images used in this README.
-- `background_images/`: Custom background assets used in the design.
-- `fonts/`: Custom fonts used in the watch face.
-- `icons/`: Icon assets.
+How to install Watch Face Studio, open the project, run it on a device, and what each folder holds:
+[documentation/overview.md](documentation/overview.md). Rules for AI agents: [AGENTS.md](AGENTS.md).
 
 ## Contributing
 
