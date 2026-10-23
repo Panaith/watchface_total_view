@@ -1,32 +1,4 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    alias(libs.plugins.android.application)
-}
-
-android {
-    namespace = "com.pansar.watchface_total_view"
-    compileSdk {
-        version = release(37)
-    }
-
-    defaultConfig {
-        applicationId = "com.pansar.watchface_total_view"
-        minSdk = 36
-        targetSdk = 37
-        versionCode = 1
-        versionName = "1.0"
-
-    }
-
-    buildTypes {
-        release {
-            optimization {
-                enable = true
-                packageScope = setOf("androidx.**", "kotlin.**", "kotlinx.**")
-            }
-        }
-    }
-    enableKotlin = false
-}
-
-dependencies {
+    alias(libs.plugins.android.application) apply false
 }
