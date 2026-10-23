@@ -1,0 +1,24 @@
+{
+  "$schema": "./mcp-servers.schema.json",
+  "$comment": [
+    "Agent-neutral MCP server definitions for Watch Face Total View. This is the single source",
+    "of truth; ai_tooling/setup.ps1 generates the per-agent config from it, because every",
+    "tool spells the same thing differently. Each agent's file, top-level key and",
+    "HTTP field are in ai_tooling/manifest/agents.json (\"mcp\").",
+    "",
+    "${REPO_ROOT} is replaced with this clone's absolute path at generation time.",
+    "Every generated file is gitignored, so absolute paths are correct there and",
+    "sidestep the fact that path variables differ per tool too (${CLAUDE_PROJECT_DIR}",
+    "vs ${workspaceFolder} vs nothing at all in Cursor).",
+    "",
+    "A server published on npm is started through ai_tooling/npm-mcp.js with an exact",
+    "version: \"command\": \"node\", \"args\": [\"${REPO_ROOT}/ai_tooling/npm-mcp.js\", \"{package}@{version}\", ...].",
+    "scripts/setup-tools.ps1 installs that version into ai_tooling/mcp-packages.",
+    "",
+    "skipAgents lists agents that already get the server another way - adding it",
+    "again would run a second, duplicate process.",
+    "",
+    "Known servers and how to declare them: documentation/mcp.md."
+  ],
+  "servers": {}
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ai_tooling skills",
+  "description": "Schema of ai_tooling/manifest/skills.json: every skill, its group, and the profiles setup.ps1 publishes. That the entries match the folders is checked by verify-agent-setup.ps1.",
+  "type": "object",
+  "required": ["groups", "profiles", "skills"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "$comment": { "$ref": "#/definitions/note" },
+    "groups": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "$ref": "#/definitions/groupName" },
+      "additionalProperties": { "$ref": "#/definitions/group" }
+    },
+    "profiles": {
+      "description": "Named selections of groups. 'default' and 'all' are built in and cannot be redefined. A name starts with a letter: PowerShell reads an unquoted 4d as the number 4.",
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z][a-z0-9-]*$", "not": { "enum": ["default", "all"] } },
+      "additionalProperties": { "$ref": "#/definitions/profile" }
+    },
+    "skills": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "$ref": "#/definitions/skillName" },
+      "additionalProperties": { "$ref": "#/definitions/skill" }
+    }
+  },
+  "definitions": {
+    "note": {
+      "description": "Free text for people: one string or a list of lines.",
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ]
+    },
+    "groupName": {
+      "description": "The group's folder under ai_tooling/skills/, one or two segments.",
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*(/[a-z0-9][a-z0-9-]*)?$"
+    },
+    "skillName": {
+      "description": "The skill's folder name, equal to the name in its SKILL.md frontmatter (Agent Skills: lowercase letters, digits and hyphens, at most 64 characters).",
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+    },
+    "apps": {
+      "description": "App folders the skill is for; empty for every app.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$" }
+    },
+    "group": {
+      "type": "object",
+      "required": ["description", "owner", "source", "apps", "default"],
+      "additionalProperties": false,
+      "patternProperties": { "^\\$": { "$ref": "#/definitions/note" } },
+      "properties": {
+        "description": { "type": "string", "minLength": 1 },
+        "owner": { "description": "The person who reviews changes to these skills.", "type": "string", "minLength": 1 },
+        "source": {
+          "description": "'project' for skills written in this repository, or the upstream they are installed from.",
+          "oneOf": [
+            { "const": "project" },
+            {
+              "type": "object",
+              "required": ["repo", "installer"],
+              "additionalProperties": false,
+              "patternProperties": { "^\\$": { "$ref": "#/definitions/note" } },
+              "properties": {
+                "repo": { "type": "string", "pattern": "^https://" },
+                "ref": { "description": "The tag or branch the installer clones, if it pins one.", "type": "string", "minLength": 1 },
+                "commit": { "description": "The upstream commit last installed, written by the installer.", "type": "string", "pattern": "^[0-9a-f]{40}$" },
+                "hash": { "description": "SHA-256 over the group folder, CRLF-normalised, recorded by the installer (Set-SkillGroupHash); verify-agent-setup.ps1 compares it.", "type": "string", "pattern": "^[0-9a-f]{64}$" },
+                "installer": { "description": "The script that refreshes the group, relative to the repository root.", "type": "string", "pattern": "^ai_tooling/[^\\\\]+\\.ps1$" }
+              }
+            }
+          ]
+        },
+        "apps": { "$ref": "#/definitions/apps" },
+        "default": { "description": "Published by the default profile.", "type": "boolean" }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "required": ["description", "groups"],
+      "additionalProperties": false,
+      "patternProperties": { "^\\$": { "$ref": "#/definitions/note" } },
+      "properties": {
+        "description": { "type": "string", "minLength": 1 },
+        "groups": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/definitions/groupName" } }
+      }
+    },
+    "skill": {
+      "type": "object",
+      "required": ["group"],
+      "additionalProperties": false,
+      "patternProperties": { "^\\$": { "$ref": "#/definitions/note" } },
+      "properties": {
+        "group": { "$ref": "#/definitions/groupName" },
+        "apps": { "$ref": "#/definitions/apps" },
+        "default": { "type": "boolean" },
+        "status": { "enum": ["active", "deprecated"], "default": "active" },
+        "replacedBy": { "description": "The skill that replaces a deprecated one.", "$ref": "#/definitions/skillName" }
+      },
+      "if": { "properties": { "status": { "const": "deprecated" } }, "required": ["status"] },
+      "then": { "required": ["replacedBy"] }
+    }
+  }
+}

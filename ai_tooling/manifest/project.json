@@ -1,0 +1,17 @@
+{
+  "$comment": [
+    "The project's own facts for the ai_tooling engine (lib/AgentSetup.psm1, setup.ps1,",
+    "verify-agent-setup.ps1), which is the same in every project set up from the blueprint.",
+    "",
+    "name           the project's name, shown by setup.ps1 and in generated notes.",
+    "skillPrefixes  the prefixes of the project's own skills and subagents, lowercase:",
+    "               project skills are named {prefix}-{app}-{feature}-{action}, upstream",
+    "               skills may not start with one, and setup removes a subagent with such a",
+    "               prefix from a copied subagents folder once it is gone from agents/. The",
+    "               first one is the main prefix ({prefix}-aitooling-maintain, {prefix}-role-*).",
+    "               A second one is for a product family with its own apps in the same",
+    "               repository."
+  ],
+  "name": "Watch Face Total View",
+  "skillPrefixes": ["custom"]
+}

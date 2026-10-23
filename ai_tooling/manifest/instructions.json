@@ -1,0 +1,20 @@
+{
+  "$comment": [
+    "Where each ai_tooling/instructions file applies, for agents that get it as a rule file",
+    "scoped by globs (Copilot: *.instructions.md + applyTo; Cursor: *.mdc + globs; Antigravity:",
+    "trigger: model_decision with the globs in the description, for a file whose own frontmatter",
+    "says trigger: glob or has no trigger).",
+    "Kept here, not in the files, because the update-*.ps1 installers may overwrite those.",
+    "Globs are relative to the repository root. allApps: every app folder with its own",
+    "AGENTS.md, so a new app is covered without editing this file.",
+    "A file in ai_tooling/instructions/ without an entry is published as on-demand only, with",
+    "a warning; verify-agent-setup.ps1 fails on it.",
+    "Example of a stack rule: \"hot-reload.md\": { \"description\": \"...\", \"globs\": [\"mobile_app/lib/**/*.dart\"] }"
+  ],
+  "instructions": {
+    "coding-principles.md": {
+      "description": "Coding principles for every change to app code",
+      "allApps": true
+    }
+  }
+}

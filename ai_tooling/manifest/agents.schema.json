@@ -1,0 +1,175 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ai_tooling agent layouts",
+  "description": "Schema of ai_tooling/manifest/agents.json, which tells ai_tooling/setup.ps1 and ai_tooling/verify-agent-setup.ps1 where each agent wants things. Checked by ai_tooling/verify-agent-setup.ps1 when it runs in PowerShell 7 (Test-Json).",
+  "type": "object",
+  "required": ["agents"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "$comment": { "$ref": "#/definitions/note" },
+    "agents": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "pattern": "^[a-z][a-z0-9]*$" },
+      "additionalProperties": { "$ref": "#/definitions/agent" }
+    }
+  },
+  "definitions": {
+    "note": {
+      "description": "Free text for people: one string or a list of lines.",
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ]
+    },
+    "path": {
+      "description": "Relative, with forward slashes; never absolute, never leaving its root.",
+      "type": "string",
+      "pattern": "^[^/\\\\:*?\"<>|][^\\\\:*?\"<>|]*$",
+      "not": { "pattern": "(^|/)\\.\\.(/|$)" }
+    },
+    "fileName": { "type": "string", "pattern": "^[^/\\\\:*?\"<>|]+$" },
+    "agent": {
+      "type": "object",
+      "required": ["name", "detect", "skills", "skillLinks", "resolvesImports", "readsNestedAgentsMd", "mcp"],
+      "additionalProperties": false,
+      "patternProperties": { "^\\$": { "$ref": "#/definitions/note" } },
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "detect": {
+          "description": "Signs that the agent is installed; any one of them is enough.",
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "patternProperties": { "^\\$": { "$ref": "#/definitions/note" } },
+          "properties": {
+            "vscodeExtensions": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+            "homeFolders": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/path" } },
+            "commands": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+          }
+        },
+        "skills": { "$ref": "#/definitions/path" },
+        "skillLinks": {
+          "description": "How each published skill gets into the skills folder: a junction to its source, or a copy for agents that do not follow a junction inside their skills folder.",
+          "enum": ["junction", "copy"]
+        },
+        "subagents": {
+          "description": "Folder for the subagent definitions in ai_tooling/agents/, a junction like the skills. Only for agents that read subagent definitions.",
+          "$ref": "#/definitions/path"
+        },
+        "stub": {
+          "description": "An instruction file holding '@AGENTS.md', for agents that read their own file instead of AGENTS.md.",
+          "type": "object",
+          "required": ["file", "inApps"],
+          "additionalProperties": false,
+          "properties": {
+            "file": { "$ref": "#/definitions/fileName" },
+            "inApps": { "type": "boolean" }
+          }
+        },
+        "resolvesImports": { "type": "boolean" },
+        "readsNestedAgentsMd": { "type": "boolean" },
+        "rules": {
+          "type": "object",
+          "required": ["folder", "format"],
+          "additionalProperties": false,
+          "patternProperties": { "^\\$": { "$ref": "#/definitions/note" } },
+          "properties": {
+            "folder": { "$ref": "#/definitions/path" },
+            "format": { "description": "Which writer in ai_tooling/lib/AgentSetup.psm1 writes the rule files.", "enum": ["antigravity", "copilot", "cursor"] },
+            "staleFiles": { "type": "array", "items": { "$ref": "#/definitions/fileName" } }
+          }
+        },
+        "pointerFile": { "$ref": "#/definitions/path" },
+        "legacyFiles": {
+          "description": "Files earlier versions wrote; removed only when their content is exactly 'content'.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["file", "content"],
+            "additionalProperties": false,
+            "patternProperties": { "^\\$": { "$ref": "#/definitions/note" } },
+            "properties": {
+              "file": { "$ref": "#/definitions/path" },
+              "content": { "type": "string" }
+            }
+          }
+        },
+        "personal": {
+          "description": "Where the agent reads the developer's own skills and MCP servers, outside the repository. verify-agent-setup.ps1 warns when one carries the name of a project skill or server. hides: the agent's documentation says the personal one wins.",
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "patternProperties": { "^\\$": { "$ref": "#/definitions/note" } },
+          "properties": {
+            "skills": {
+              "description": "Folders relative to the home folder.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": ["folder", "hides"],
+                "additionalProperties": false,
+                "patternProperties": { "^\\$": { "$ref": "#/definitions/note" } },
+                "properties": {
+                  "folder": { "$ref": "#/definitions/path" },
+                  "hides": { "type": "boolean" }
+                }
+              }
+            },
+            "mcp": {
+              "description": "JSON files with MCP servers that are not the project's. perProject: the key holding one entry per project path, each with its own 'key' list.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": ["root", "file", "key", "hides"],
+                "additionalProperties": false,
+                "patternProperties": { "^\\$": { "$ref": "#/definitions/note" } },
+                "properties": {
+                  "root": { "enum": ["home", "appdata"] },
+                  "file": { "$ref": "#/definitions/path" },
+                  "key": { "type": "string", "minLength": 1 },
+                  "perProject": { "type": "string", "minLength": 1 },
+                  "hides": { "type": "boolean" }
+                }
+              }
+            }
+          }
+        },
+        "mcp": {
+          "type": "object",
+          "required": ["root", "file", "key", "httpUrlField", "httpType"],
+          "additionalProperties": false,
+          "patternProperties": { "^\\$": { "$ref": "#/definitions/note" } },
+          "properties": {
+            "root": { "enum": ["repo", "home"] },
+            "file": { "$ref": "#/definitions/path" },
+            "key": { "type": "string", "minLength": 1 },
+            "httpUrlField": { "type": "string", "minLength": 1 },
+            "httpType": { "description": "Whether an HTTP server carries \"type\": \"http\".", "type": "boolean" },
+            "legacyFiles": {
+              "description": "MCP config files earlier versions of setup.ps1 wrote the project's servers to for this agent, under legacyRoot. setup.ps1 and -Remove take the project's servers out of them; the developer's own stay.",
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/definitions/path" }
+            },
+            "legacyRoot": {
+              "description": "The root of legacyFiles and keepValid, when it is not the same as root.",
+              "enum": ["repo", "home"]
+            },
+            "keepValid": {
+              "description": "MCP config files under legacyRoot that the agent reads and that must stay a JSON object: setup.ps1 writes an empty server list into a missing or empty one and never deletes one.",
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/definitions/path" }
+            }
+          }
+        }
+      },
+      "if": { "properties": { "resolvesImports": { "const": false } } },
+      "then": { "required": ["rules"] }
+    }
+  }
+}

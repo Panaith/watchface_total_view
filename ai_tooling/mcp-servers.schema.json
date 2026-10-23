@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ai_tooling MCP server definitions",
+  "description": "Schema of ai_tooling/mcp-servers.json, from which ai_tooling/setup.ps1 generates every agent's MCP config. Checked by ai_tooling/verify-agent-setup.ps1 when it runs in PowerShell 7 (Test-Json).",
+  "type": "object",
+  "required": ["servers"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "$comment": { "$ref": "#/definitions/note" },
+    "servers": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z][a-z0-9-]*$" },
+      "additionalProperties": { "$ref": "#/definitions/server" }
+    }
+  },
+  "definitions": {
+    "note": {
+      "description": "Free text for people: one string or a list of lines.",
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ]
+    },
+    "agent": {
+      "description": "A key of ai_tooling/manifest/agents.json; the tests check that it exists there.",
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*$"
+    },
+    "server": {
+      "type": "object",
+      "required": ["description", "transport"],
+      "additionalProperties": false,
+      "patternProperties": {
+        "^\\$": { "$ref": "#/definitions/note" }
+      },
+      "properties": {
+        "description": { "type": "string", "minLength": 1 },
+        "transport": { "enum": ["stdio", "http"] },
+        "command": { "type": "string", "minLength": 1 },
+        "args": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "Use ${REPO_ROOT} for paths in the repository, never an absolute path.",
+            "not": { "pattern": "^([A-Za-z]:[\\\\/]|\\\\\\\\)" }
+          }
+        },
+        "url": { "type": "string", "pattern": "^https://" },
+        "envArgs": {
+          "description": "Per-developer opt-ins: arguments appended when the environment variable is set; ${VALUE} is its value.",
+          "type": "object",
+          "propertyNames": { "pattern": "^[A-Z][A-Z0-9_]*$" },
+          "additionalProperties": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+        },
+        "skipAgents": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/definitions/agent" } },
+        "skipReason": { "type": "string", "minLength": 1 }
+      },
+      "dependencies": { "skipAgents": ["skipReason"] },
+      "if": { "properties": { "transport": { "const": "stdio" } } },
+      "then": { "required": ["command", "args"], "not": { "required": ["url"] } },
+      "else": { "required": ["url"], "not": { "anyOf": [{ "required": ["command"] }, { "required": ["args"] }, { "required": ["envArgs"] }] } }
+    }
+  }
+}
