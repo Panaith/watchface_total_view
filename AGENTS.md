@@ -11,6 +11,7 @@ This repository hosts several independent apps, each in its own top-level folder
 | Folder | Description | Guide |
 |---|---|---|
 | [`watchface/`](watchface/) | Wear OS digital watch face built with Watch Face Format (WFF) v2 | [`watchface/AGENTS.md`](watchface/AGENTS.md) |
+| [`project in WatchFace Studio/`](<project in WatchFace Studio/>) | Original Samsung Watch Face Studio project of the watch face (`.wfs` sources, icons, backgrounds, fonts, screenshots) | [`README.md`](<project in WatchFace Studio/README.md>) |
 
 Before working on an app, read its `AGENTS.md`. Run that app's build and validation commands from inside its folder.
 
@@ -21,6 +22,7 @@ watchface_total_view/
 ├── .gitignore      # Repo-wide ignores (.idea, *.iml, .DS_Store, GEMINI.md); each app has its own .gitignore
 ├── AGENTS.md       # This file: monorepo overview
 ├── GEMINI.md       # Antigravity context loader (imports @AGENTS.md)
+├── project in WatchFace Studio/  # Watch Face Studio project (.wfs sources, assets)
 └── watchface/      # Wear OS watch face (Gradle project)
 ```
 

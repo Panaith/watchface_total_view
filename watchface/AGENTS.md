@@ -40,7 +40,6 @@ watchface_total_view/                  # Monorepo root (AGENTS.md, GEMINI.md, .g
     │   ├── libs.versions.toml         # Version catalog (AGP 9.4.1)
     │   └── wrapper/                   # Gradle wrapper binaries
     ├── gradlew, gradlew.bat           # Gradle wrapper CLI scripts
-    ├── project in WatchFace Studio/   # Reference WatchFace Studio project (.wfs sources, icons, backgrounds)
     ├── tools/
     │   └── wff-validator.jar          # Official Google WFF validator
     └── app/                           # Core watch face module (Gradle project ":app")
